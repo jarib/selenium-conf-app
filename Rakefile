@@ -25,9 +25,11 @@ task :fetch do
 
   user = ENV.fetch 'GOOGLE_USER'
   pass = ENV.fetch 'GOOGLE_PASS'
-  pass = File.read(pass) if File.exist?(pass)
 
-  sheet = GoogleSpreadsheet.login().spreadsheet_by_key("0ApjAqinI2AJCdDE0OGN2ZzllcUtmeVRzREJDaFVzUVE")
+  passfile = File.expand_path(pass)
+  pass = File.read(passfile) if File.exist?(passfile)
+
+  sheet = GoogleSpreadsheet.login(user, pass).spreadsheet_by_key("0ApjAqinI2AJCdDE0OGN2ZzllcUtmeVRzREJDaFVzUVE")
   puts "done."
 
   print 'fetching rows...'
@@ -43,5 +45,8 @@ end
 
 desc 'Upload JSON to the server'
 task :upload do
-  sh "scp", "-r", "speakers.json", "sessions.json", "linode:/sites/files.jaribakken.com/www/tmp/"
+  host = ENV['host'] or raise "please specify the host"
+  sh "scp", "-r", "speakers.json", "sessions.json", "#{host}:/sites/files.jaribakken.com/www/tmp/"
 end
+
+task :refresh => [:fetch, :upload]
