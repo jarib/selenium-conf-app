@@ -25,7 +25,7 @@
  *
  * The following Appcelerator Employees also spent time answering questions via phone calls, IRC
  * and email and contributed code to the original Drupalcon Mobile application.
- * 
+ *
  * Tony Guntharp
  * Chad Auld
  * Don Thorp
@@ -55,29 +55,33 @@
 
         // Create data for TableView
         var data = [
+        	// createDayRow({
+	            // title: 'Sunday, September 18th',
+	            // titleShort: 'September 18th',
+	            // scheduleListing: false,
+	            // url: 'pages/2011-09-18.html'
+	        // }),
 	        createDayRow({
-	            title: 'Sunday, September 18th',
-	            titleShort: 'September 18th',
-	            scheduleListing: false,
-	            url: 'pages/2011-09-18.html'
-	        }), createDayRow({
-	            title: 'Monday, September 19th',
-	            titleShort: 'September 19th',
-	            start_date: '2011-09-19 00:00:00',
-	            end_date: '2011-09-20 00:00:00',
+	            title: 'Monday, April 16th',
+	            titleShort: 'April 16th',
+	            start_date: Codestrong.datetime.strtotime('2012-04-16 00:00:00'),
+	            end_date: Codestrong.datetime.strtotime('2012-04-17 00:00:00'),
 	            scheduleListing: true
-	        }), createDayRow({
-	            title: 'Tuesday, September 20th',
-	            titleShort: 'September 20th',
-	            start_date: '2011-09-20 00:00:00',
-	            end_date: '2011-09-21 00:00:00',
+	        }),
+	        createDayRow({
+	            title: 'Tuesday, April 17h',
+	            titleShort: 'April 17th',
+	            start_date: Codestrong.datetime.strtotime('2012-04-17 00:00:00'),
+	            end_date: Codestrong.datetime.strtotime('2012-04-18 00:00:00'),
 	            scheduleListing: true
-	        }), createDayRow({
-	            title: 'Hackathon',
-	            titleShort: 'Hackathon',
-	            scheduleListing: false,
-	            url: 'pages/hackathon.html'
-	        })
+	        }),
+	        createDayRow({
+	            title: 'Monday, April 18th',
+	            titleShort: 'April 18th',
+	            start_date: Codestrong.datetime.strtotime('2012-04-18 00:00:00'),
+	            end_date: Codestrong.datetime.strtotime('2012-04-19 00:00:00'),
+	            scheduleListing: true
+	        }),
         ];
 
         // create main day window

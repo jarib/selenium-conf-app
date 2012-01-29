@@ -25,7 +25,7 @@
  *
  * The following Appcelerator Employees also spent time answering questions via phone calls, IRC
  * and email and contributed code to the original Drupalcon Mobile application.
- * 
+ *
  * Tony Guntharp
  * Chad Auld
  * Don Thorp
@@ -38,7 +38,7 @@
         var twitterTimeout = 11000;
         var tweetCount = 50;
         var firstRun = true;
-        
+
         var twitterWindow = Titanium.UI.createWindow({
             id: 'twitterWindow',
             title: 'Twitter News',
@@ -55,25 +55,25 @@
             });
         };
         var data = [{
-        	title: '#codestrong',
-        	view: createTwitterTable('#codestrong'),
-            url: 'http://search.twitter.com/search.json?q=%23codestrong&result_type=recent&rpp=' + tweetCount,
+        	title: '#seconf',
+        	view: createTwitterTable('#seconf'),
+            url: 'http://search.twitter.com/search.json?q=%23seconf&result_type=recent&rpp=' + tweetCount,
             isSearch: true
         }, {
-            title: '@appcelerator',
-            view: createTwitterTable('@appcelerator'),
-            url: 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=appcelerator&count=' + tweetCount,
+            title: '@seleniumhq',
+            view: createTwitterTable('@seleniumhq'),
+            url: 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=seleniumhq&count=' + tweetCount,
             isSearch: false
         }, {
-            title: '@codestrong',
-            view: createTwitterTable('@codestrong'),
-            url: 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=codestrong&count=' + tweetCount,
+            title: '@seleniumconf',
+            view: createTwitterTable('@seleniumconf'),
+            url: 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=seleniumconf&count=' + tweetCount,
             isSearch: false
         }
 
         ];
         var loadedViews = [];
-        
+
         twitterWindow.add(Codestrong.ui.createTabbedScrollableView({data:data}));
 
 		// add a click handler to all twitter tables

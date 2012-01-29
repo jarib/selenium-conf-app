@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
+    <sdk-version>1.8.0.1</sdk-version>
     <deployment-targets>
         <target device="mobileweb">false</target>
         <target device="iphone">true</target>
@@ -7,13 +8,13 @@
         <target device="blackberry">false</target>
         <target device="android">true</target>
     </deployment-targets>
-    <id>com.appcelerator.codestrong</id>
+    <id>com.jaribakken.seconf</id>
     <name>Codestrong</name>
     <version>1.0</version>
-    <publisher>Appcelerator, Inc.</publisher>
-    <url>http://appcelerator.com</url>
-    <description>CODESTRONG Mobile Companion</description>
-    <copyright>2011 Appcelerator, Inc</copyright>
+    <publisher>Jari Bakken</publisher>
+    <url>http://seleniumconf.org</url>
+    <description>https://github.com/jarib/selenium-conf-app</description>
+    <copyright>2012 Jari Bakken + 2011 Appcelerator, Inc</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
     <prerendered-icon>false</prerendered-icon>

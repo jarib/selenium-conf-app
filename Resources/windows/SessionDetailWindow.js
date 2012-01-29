@@ -25,7 +25,7 @@
  *
  * The following Appcelerator Employees also spent time answering questions via phone calls, IRC
  * and email and contributed code to the original Drupalcon Mobile application.
- * 
+ *
  * Tony Guntharp
  * Chad Auld
  * Don Thorp
@@ -36,10 +36,6 @@
 (function () {
 
     Codestrong.ui.createSessionDetailWindow = function (settings) {
-        Drupal.setDefaults(settings, {
-            title: 'title here',
-            nid: ''
-        });
         var commonPadding = 15;
         var sessionDetailWindow = Titanium.UI.createWindow({
             id: 'sessionDetailWindow',
@@ -51,8 +47,8 @@
         sessionDetailWindow.orientationModes = [Ti.UI.PORTRAIT];
 
         // Build session data
-        var sessionData = Drupal.entity.db('main', 'node').load(settings.nid);
-        
+        var sessionData = SeConf.datastore.sessionAt(settings.nid);
+
         var tvData = [];
         var tv = Ti.UI.createTableView({
             textAlign: 'left',
@@ -181,7 +177,7 @@
             }
 
             // Get the presenter information.
-            var presenterData = Drupal.entity.db('main', 'user').loadByField('full_name', instructorList); //sessionData.instructors);
+            var presenterData = SeConf.datastore.getSpeakersNamed(instructorList);
             tvData.push(Codestrong.ui.createHeaderRow((instructorList.length > 1) ? 'Speakers' : 'Speaker'));
             for (var j in presenterData) {
                 tvData.push(renderPresenter(presenterData[j]));

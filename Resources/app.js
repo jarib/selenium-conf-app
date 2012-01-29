@@ -25,7 +25,7 @@
  *
  * The following Appcelerator Employees also spent time answering questions via phone calls, IRC
  * and email and contributed code to the original Drupalcon Mobile application.
- * 
+ *
  * Tony Guntharp
  * Chad Auld
  * Don Thorp
@@ -35,7 +35,8 @@
  */
 
 // Declaring variables to prevent implied global error in jslint
-var Ti, Drupal;
+var Ti;
+var SeConf = {};
 
 // this sets the background color of the master UIView (when there are no windows/tab groups on it)
 Ti.UI.setBackgroundColor('#414444');
@@ -45,34 +46,15 @@ Ti.include(
 	'cs/cs.js',
 	'cs/ui.js',
 	'cs/datetime.js',
-	
-	// Drupal connection libraries
-  	'drupal/drupal.js',
-  	'drupal/db.js',
-  	'drupal/db.insert.js',
-  	'drupal/entity.js',
-  	'drupal/entity.datastore.js',
-  	
-  	// Codestrong specific Drupal entities
-  	'cs/entity.js'
+
+	// data store
+	'datastore/datastore.js'
 );
 
-// Register our database information.
-Drupal.db.addConnectionInfo('main');
-Ti.Database.install('main.sql', 'main');
-
-// If we haven't created the tables yet, make empty ones to ensure that the
-// app doesn't crash.
-if (!Drupal.db.getConnection('main').tableExists('node')) {
-  	Drupal.entity.db('main', 'node').initializeSchema();
-}
-if (!Drupal.db.getConnection('main').tableExists('user')) {
-  	Drupal.entity.db('main', 'user').initializeSchema();
-}
 
 Ti.include(
 	// All Codestrong windows
-  	'windows/ModalActivityIndicatorWindow.js',	
+  	'windows/ModalActivityIndicatorWindow.js',
   	'windows/DayWindow.js',
   	'windows/TwitterWindow.js',
   	'windows/MapWindow.js',
@@ -83,7 +65,7 @@ Ti.include(
   	'windows/SessionDetailWindow.js',
   	'windows/PresenterDetailWindow.js',
   	'windows/HtmlWindow.js',
-  
+
   	// Create icons based on previous custom windows and
   	// load them into the main dashboard window
   	'cs/icons.js',
@@ -94,3 +76,5 @@ Ti.include(
 Ti.App.addEventListener('openURL', function(e){
   	Ti.Platform.openURL(e.url);
 });
+
+

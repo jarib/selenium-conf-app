@@ -25,7 +25,7 @@
  *
  * The following Appcelerator Employees also spent time answering questions via phone calls, IRC
  * and email and contributed code to the original Drupalcon Mobile application.
- * 
+ *
  * Tony Guntharp
  * Chad Auld
  * Don Thorp
@@ -36,11 +36,11 @@
 (function () {
 
     Codestrong.ui.createSessionsWindow = function (settings) {
-        Drupal.setDefaults(settings, {
-            title: 'title here',
-            start_date: '',
-            end_date: ''
-        });
+        // Drupal.setDefaults(settings, {
+            // title: 'title here',
+            // start_date: '',
+            // end_date: ''
+        // });
 
         var sessionsWindow = Titanium.UI.createWindow({
             id: 'sessionsWindow',
@@ -52,19 +52,20 @@
         sessionsWindow.orientationModes = [Ti.UI.PORTRAIT];
 
         var data = [];
-        var conn = Drupal.db.getConnection('main');
-        var rows = conn.query("SELECT nid FROM node WHERE start_date >= ? AND end_date <= ? ORDER BY start_date, nid", [settings.start_date, settings.end_date]);
-        var nids = [];
-
-        while (rows.isValidRow()) {
-            nids.push(rows.fieldByName('nid'));
-            rows.next();
-        }
-        rows.close();
+        // var conn = Drupal.db.getConnection('main');
+        // var rows = conn.query("SELECT nid FROM node WHERE start_date >= ? AND end_date <= ? ORDER BY start_date, nid", [settings.start_date, settings.end_date]);
+        // var nids = [];
+//
+        // while (rows.isValidRow()) {
+            // nids.push(rows.fieldByName('nid'));
+            // rows.next();
+        // }
+        // rows.close();
 
 		// Create session rows
 		var lastTime = '';
-        var sessions = Drupal.entity.db('main', 'node').loadMultiple(nids, ['start_date', 'nid']);
+		Titanium.API.debug("fetching: " + JSON.stringify(settings));
+        var sessions = SeConf.datastore.getSessionsFor(settings.start_date, settings.end_date);
         for (var sessionNum = 0, numSessions = sessions.length; sessionNum < numSessions; sessionNum++) {
             var session = sessions[sessionNum];
             var sessionTitle = Codestrong.cleanSpecialChars(session.title);
@@ -145,7 +146,7 @@
             sessionRow.add(roomLabel);
 
 			if (headerRow) {
-				data.push(headerRow);	
+				data.push(headerRow);
 			}
 			data.push(sessionRow);
         }

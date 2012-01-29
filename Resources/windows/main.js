@@ -25,7 +25,7 @@
  *
  * The following Appcelerator Employees also spent time answering questions via phone calls, IRC
  * and email and contributed code to the original Drupalcon Mobile application.
- * 
+ *
  * Tony Guntharp
  * Chad Auld
  * Don Thorp
@@ -117,7 +117,7 @@
                 iconWin.leftNavButton = leftButton;
             }
 
-            // add sessions and speaker refresh 
+            // add sessions and speaker refresh
             if (icon.refresh) {
                 if (Codestrong.isAndroid()) {
                     iconWin.addEventListener('open', function () {
@@ -167,7 +167,7 @@
 
     // Handle sessions and speaker updates
     var updateCount = 0;
-    Ti.addEventListener('drupal:entity:datastore:update_completed', function (e) {
+    Ti.addEventListener('datastore:update_completed', function (e) {
         updateCount++;
         if (updateCount >= 2) {
             updateCount = 0;
@@ -179,7 +179,8 @@
     Ti.addEventListener('codestrong:update_data', function (e) {
         Codestrong.ui.activityIndicator.showModal('Loading sessions and speakers...', updateTimeout, 'Connection timed out. All session and speaker data may not have updated.');
         updateCount = 0;
-        Drupal.entity.db('main', 'node').fetchUpdates('session');
-        Drupal.entity.db('main', 'user').fetchUpdates('user');
+
+        SeConf.datastore.refresh('sessions');
+        SeConf.datastore.refresh('speakers');
     });
 })();

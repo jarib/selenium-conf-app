@@ -1,0 +1,47 @@
+require 'json'
+
+def json_write(rows, name, opts)
+  rows = rows.dup
+  id = opts[:index] || 'id'
+
+  data = []
+  headers = rows.shift
+  rows.each_with_index do |row, idx|
+    row_hash = {id => idx}
+    row.each_with_index { |e, i| row_hash[headers[i]] = e }
+    data << row_hash
+  end
+
+  File.open(name, "w") { |file| file << data.to_json }
+end
+
+
+desc 'Fetch data from the from the spreadsheet'
+task :fetch do
+  require "google_spreadsheet"
+  require 'json'
+
+  print "fetching spreadsheet..."
+
+  user = ENV.fetch 'GOOGLE_USER'
+  pass = ENV.fetch 'GOOGLE_PASS'
+  pass = File.read(pass) if File.exist?(pass)
+
+  sheet = GoogleSpreadsheet.login().spreadsheet_by_key("0ApjAqinI2AJCdDE0OGN2ZzllcUtmeVRzREJDaFVzUVE")
+  puts "done."
+
+  print 'fetching rows...'
+  session_rows = sheet.worksheets[0].rows
+  speaker_rows = sheet.worksheets[1].rows
+  puts 'done.'
+
+  print 'writing json...'
+  json_write session_rows, 'sessions.json', :index => 'nid'
+  json_write speaker_rows, 'speakers.json', :index => 'sid'
+  puts 'done.'
+end
+
+desc 'Upload JSON to the server'
+task :upload do
+  sh "scp", "-r", "speakers.json", "sessions.json", "linode:/sites/files.jaribakken.com/www/tmp/"
+end
