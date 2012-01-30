@@ -25,7 +25,7 @@
  *
  * The following Appcelerator Employees also spent time answering questions via phone calls, IRC
  * and email and contributed code to the original Drupalcon Mobile application.
- * 
+ *
  * Tony Guntharp
  * Chad Auld
  * Don Thorp
@@ -45,11 +45,11 @@
         });
         var data = [
         	{
-	            title: 'Codestrong',
+	            title: 'Selenium Conference',
 	            view: Ti.UI.createWebView({
 	                url: 'pages/about.html'
 	            })
-        	}, 
+        	},
         	{
 	            title: 'The App',
 	            view: Ti.UI.createWebView({
@@ -57,9 +57,9 @@
 	            })
         	}
         ];
-        
+
         aboutWindow.add(Codestrong.ui.createTabbedScrollableView({data:data}));
-        
+
         return aboutWindow;
     };
 })();
