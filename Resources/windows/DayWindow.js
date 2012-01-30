@@ -55,31 +55,25 @@
 
         // Create data for TableView
         var data = [
-        	// createDayRow({
-	            // title: 'Sunday, September 18th',
-	            // titleShort: 'September 18th',
-	            // scheduleListing: false,
-	            // url: 'pages/2011-09-18.html'
-	        // }),
 	        createDayRow({
 	            title: 'Monday, April 16th',
 	            titleShort: 'April 16th',
-	            start_date: Codestrong.datetime.strtotime('2012-04-16 00:00:00'),
-	            end_date: Codestrong.datetime.strtotime('2012-04-17 00:00:00'),
+	            start_date: Codestrong.datetime.strtotime('2012-04-16 00:00:00'), // TODO new Date...
+	            end_date: Codestrong.datetime.strtotime('2012-04-17 00:00:00'), // TODO new Date...
 	            scheduleListing: true
 	        }),
 	        createDayRow({
 	            title: 'Tuesday, April 17h',
 	            titleShort: 'April 17th',
-	            start_date: Codestrong.datetime.strtotime('2012-04-17 00:00:00'),
-	            end_date: Codestrong.datetime.strtotime('2012-04-18 00:00:00'),
+	            start_date: Codestrong.datetime.strtotime('2012-04-17 00:00:00'), // TODO new Date...
+	            end_date: Codestrong.datetime.strtotime('2012-04-18 00:00:00'), // TODO new Date...
 	            scheduleListing: true
 	        }),
 	        createDayRow({
 	            title: 'Monday, April 18th',
 	            titleShort: 'April 18th',
-	            start_date: Codestrong.datetime.strtotime('2012-04-18 00:00:00'),
-	            end_date: Codestrong.datetime.strtotime('2012-04-19 00:00:00'),
+	            start_date: Codestrong.datetime.strtotime('2012-04-18 00:00:00'), // TODO new Date...
+	            end_date: Codestrong.datetime.strtotime('2012-04-19 00:00:00'), // TODO new Date...
 	            scheduleListing: true
 	        }),
         ];
@@ -117,6 +111,8 @@
             }
 
         });
+
+        SeConf.datastore.getSessions(); // we want to make the inital request here.
 
         return dayWindow;
     };

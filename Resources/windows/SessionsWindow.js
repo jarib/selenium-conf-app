@@ -36,12 +36,6 @@
 (function () {
 
     Codestrong.ui.createSessionsWindow = function (settings) {
-        // Drupal.setDefaults(settings, {
-            // title: 'title here',
-            // start_date: '',
-            // end_date: ''
-        // });
-
         var sessionsWindow = Titanium.UI.createWindow({
             id: 'sessionsWindow',
             title: settings.titleShort,
@@ -52,19 +46,10 @@
         sessionsWindow.orientationModes = [Ti.UI.PORTRAIT];
 
         var data = [];
-        // var conn = Drupal.db.getConnection('main');
-        // var rows = conn.query("SELECT nid FROM node WHERE start_date >= ? AND end_date <= ? ORDER BY start_date, nid", [settings.start_date, settings.end_date]);
-        // var nids = [];
-//
-        // while (rows.isValidRow()) {
-            // nids.push(rows.fieldByName('nid'));
-            // rows.next();
-        // }
-        // rows.close();
 
 		// Create session rows
 		var lastTime = '';
-		Titanium.API.debug("fetching: " + JSON.stringify(settings));
+
         var sessions = SeConf.datastore.getSessionsFor(settings.start_date, settings.end_date);
         for (var sessionNum = 0, numSessions = sessions.length; sessionNum < numSessions; sessionNum++) {
             var session = sessions[sessionNum];

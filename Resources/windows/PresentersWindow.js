@@ -195,27 +195,14 @@
 
 
     function getNameList() {
-        var conn = Drupal.db.getConnection('main');
-        var rows = conn.query("SELECT uid, name, full_name FROM user");
-        var nameList = [];
-        
-        if (rows) {
-            while (rows.isValidRow()) {
-                var uid = rows.fieldByName('uid');
-                var full = rows.fieldByName('full_name');
-                if (full) {
-                    var names = rows.fieldByName('full_name').split(' ');
-                    var lastName = names[names.length - 1];
-                    var firstName = full.substr(0, full.length - (lastName.length + 1));
-                    nameList.push(lastName + ', ' + firstName + ':' + rows.fieldByName('uid') + ':' + rows.fieldByName('name'));
-                } else {
-                    nameList.push(rows.fieldByName('name') + ':' + rows.fieldByName('uid') + ':' + rows.fieldByName('name'));
-                }
-                rows.next();
-            }
-            rows.close();
-        }
-
+    	var speakers = SeConf.datastore.getSpeakers();
+    	
+    	var nameList = [];
+    	for(var i = 0; i < speakers.length; i++) {
+    		var speaker = speakers[i];
+			nameList.push(speaker.full_name + ":" + speaker.uid + ":" + speaker.name);    		
+    	}
+    	
         return nameList;
     }
 

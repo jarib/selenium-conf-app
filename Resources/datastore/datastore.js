@@ -50,28 +50,68 @@ SeConf.DataStore.prototype.getSessions = function() {
 	return this.sessions;
 };
 
+SeConf.DataStore.prototype.sessionAt = function(nid) {
+	var sessions = this.getSessions();
+	for(var i = 0; i < sessions.length; i++) {
+		var session = sessions[i];
+		if(session.nid === nid) {
+			return session;
+		}
+	}
+
+	throw new Error("could not find session with nid: " + nid);
+}
+
+SeConf.DataStore.prototype.speakerAt = function(uid) {
+	var speakers = this.getSpeakers();
+	for(var i = 0; i < speakers.length; i++) {
+		var speaker = speakers[i];
+		if(speaker.uid === uid) {
+			return speaker;
+		}
+	}
+
+	throw new Error("could not find speaker with uid: " + uid);
+}
+
+
 SeConf.DataStore.prototype.getSpeakersNamed = function(names) {
 	return this.getSpeakers(); // TODO
 };
 
-SeConf.DataStore.prototype.refreshIfNecessary = function() {
-	Ti.fireEvent("codestrong:update_data");
+SeConf.DataStore.prototype.getSessionsForSpeaker = function(name) {
+	var sessions = this.getSessions();
+	var result = [];
+	for(var i = 0; i < sessions.length; i++) {
+		var session = sessions[i];
+		if (session.instructors.indexOf(name) != -1) {
+			result.push(session);
+		}
+	}
+
+	return result;
+}
+
+SeConf.DataStore.prototype.refreshIfNecessary = function(data) {
+	if(!data || data.length == 0) {
+		Ti.fireEvent("codestrong:update_data");
+	}
 };
 
 SeConf.DataStore.prototype.getSessionsFor = function(startDate, endDate) {
 	var result = [];
 	var sessions = this.getSessions();
-	Titanium.API.debug("session length: " + sessions.length);
+
 	for(var i = 0; i < this.sessions.length; i++) {
 		var session = this.sessions[i];
 		var sessionStart = Codestrong.datetime.strtotime(session.start_date);
 		var sessionEnd = Codestrong.datetime.strtotime(session.end_date);
-		Titanium.API.debug("dates:" + JSON.stringify([session, [sessionStart, sessionEnd], [startDate, endDate]]));
+
 		if(sessionStart >= startDate && sessionEnd <= endDate) {
 			result.push(session);
 		}
 	}
-	Ti.API.debug("returning sessions:" + JSON.stringify(result));
+
 	return result;
 }
 

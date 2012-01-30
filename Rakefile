@@ -7,7 +7,7 @@ def json_write(rows, name, opts)
   data = []
   headers = rows.shift
   rows.each_with_index do |row, idx|
-    row_hash = {id => idx}
+    row_hash = {id => idx + 1}
     row.each_with_index { |e, i| row_hash[headers[i]] = e }
     data << row_hash
   end

@@ -35,7 +35,7 @@
  */
 (function () {
     Codestrong.ui.createPresenterDetailWindow = function (settings) {
-        var presenterData = Drupal.entity.db('main', 'user').load(settings.uid);
+        var presenterData = SeConf.datastore.speakerAt(settings.uid);
         var presenterDetailWindow = Titanium.UI.createWindow({
             id: 'presenterDetailWindow',
             title: presenterData.full_name,
@@ -57,7 +57,7 @@
         });
 
         var av = Ti.UI.createImageView({
-            image: presenterData.picture.replace(/^\s+|\s+$/g, '') || 'images/userpict-large.png',
+            image: (presenterData.picture || 'images/userpict-large.png').replace(/^\s+|\s+$/g, ''),
             left: 0,
             top: 0,
             height: 110,
@@ -201,17 +201,7 @@
     };
 
     function getRelatedSessions(name) {
-        var conn = Drupal.db.getConnection('main');
-        var rows = conn.query("SELECT nid, title FROM node WHERE instructors LIKE ? ORDER BY start_date, nid", ['%' + name + '%']);
-
-        var nids = [];
-        while (rows.isValidRow()) {
-            nids.push(rows.fieldByName('nid'));
-            rows.next();
-        }
-        rows.close();
-
-        return Drupal.entity.db('main', 'node').loadMultiple(nids, ['start_date', 'nid']);
+    	return SeConf.datastore.getSessionsForSpeaker(name);
     }
 
 })();

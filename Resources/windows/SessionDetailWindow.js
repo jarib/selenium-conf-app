@@ -49,6 +49,8 @@
         // Build session data
         var sessionData = SeConf.datastore.sessionAt(settings.nid);
 
+		Ti.API.debug("sessionData" + JSON.stringify(sessionData));
+
         var tvData = [];
         var tv = Ti.UI.createTableView({
             textAlign: 'left',
@@ -160,12 +162,13 @@
                     fontSize: 16
                 }
             });
-            bodyRow.add(body);
-        }
 
-        if (!Codestrong.isAndroid()) {
-            body.right = commonPadding;
-            body.left = commonPadding;
+			if(!Codestrong.isAndroid()) {
+				body.right = commonPadding;
+				body.left = commonPadding;
+			}
+
+            bodyRow.add(body);
         }
 
         tvData.push(headerRow);
@@ -205,7 +208,7 @@
     };
 
     function renderPresenter(presenter) {
-        var userPict = presenter.picture.replace(/^\s+|\s+$/g, '') || 'images/userpict-large.png';
+        var userPict = (presenter.picture || 'images/userpict-large.png').replace(/^\s+|\s+$/g, '');
 
         var av = Ti.UI.createImageView({
             image: userPict,
