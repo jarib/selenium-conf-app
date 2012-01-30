@@ -66,7 +66,7 @@
             isSearch: false
         }, {
             title: '@seleniumconf',
-            view: createTwitterTable('@seleniumconf'),
+            view: createTwitterTable('@seleniumc..'),
             url: 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=seleniumconf&count=' + tweetCount,
             isSearch: false
         }

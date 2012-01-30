@@ -16,15 +16,15 @@ def json_write(rows, name, opts)
 end
 
 
-desc 'Fetch data from the from the spreadsheet'
+desc 'Fetch data from the spreadsheet'
 task :fetch do
   require "google_spreadsheet"
   require 'json'
 
   print "fetching spreadsheet..."
 
-  user = ENV.fetch 'GOOGLE_USER'
-  pass = ENV.fetch 'GOOGLE_PASS'
+  user = ENV['GOOGLE_USER'] or raise "must set GOOGLE_USER"
+  pass = ENV['GOOGLE_PASS'] or raise "must set GOOGLE_PASS (may be a file path)"
 
   passfile = File.expand_path(pass)
   pass = File.read(passfile) if File.exist?(passfile)
@@ -39,7 +39,7 @@ task :fetch do
 
   print 'writing json...'
   json_write session_rows, 'sessions.json', :index => 'nid'
-  json_write speaker_rows, 'speakers.json', :index => 'sid'
+  json_write speaker_rows, 'speakers.json', :index => 'uid'
   puts 'done.'
 end
 

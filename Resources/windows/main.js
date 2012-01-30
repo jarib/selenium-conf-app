@@ -88,8 +88,8 @@
         Ti.UI.orientation = Ti.UI.PORTRAIT;
     }
 
-	// Create each dashboard icon and include necessary properties
-	// for any windows it opens.
+  // Create each dashboard icon and include necessary properties
+  // for any windows it opens.
     var createIcon = function (icon) {
         var iconWin = undefined;
         var view = Ti.UI.createView({
@@ -150,7 +150,7 @@
         return view;
     };
 
-	// Layout the dashboard icons
+  // Layout the dashboard icons
     for (i = 0; i < Codestrong.ui.icons.list.length; i++) {
         viewIcons.add(createIcon(Codestrong.ui.icons.list[i]));
     }
@@ -177,11 +177,11 @@
     });
 
     Ti.addEventListener('codestrong:update_data', function (e) {
-    	Ti.API.debug("updating data");
+      Ti.API.debug("updating data");
         Codestrong.ui.activityIndicator.showModal('Loading sessions and speakers...', updateTimeout, 'Connection timed out. All session and speaker data may not have updated.');
         updateCount = 0;
 
-        SeConf.datastore.refresh('sessions');
-        SeConf.datastore.refresh('speakers');
+        SeConf.datastore.refreshSessions();
+        SeConf.datastore.refreshSpeakers();
     });
 })();

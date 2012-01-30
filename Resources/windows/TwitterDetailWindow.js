@@ -25,7 +25,7 @@
  *
  * The following Appcelerator Employees also spent time answering questions via phone calls, IRC
  * and email and contributed code to the original Drupalcon Mobile application.
- * 
+ *
  * Tony Guntharp
  * Chad Auld
  * Don Thorp
@@ -39,7 +39,7 @@
         var html = text;
         var urlRegex = /((ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)/gi;
         var hashTagRegex = /#([^ ]+)/gi;
-        var atTagRegex = /\@([a-z]+)/ig;
+        var atTagRegex = /\s*@(\S+)/ig;
 
         this.linkifyURLs = function () {
             html = html.replace(urlRegex, '<a href="$1">$1</a>');
@@ -57,12 +57,6 @@
     };
 
     Codestrong.ui.createTwitterDetailWindow = function (settings) {
-        Drupal.setDefaults(settings, {
-            title: 'title here',
-            uid: '',
-            name: ''
-        });
-
         var twitterDetailWindow = Titanium.UI.createWindow({
             id: 'twitterDetailWindow',
             title: settings.title,
