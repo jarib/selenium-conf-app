@@ -1,7 +1,7 @@
 var SeConf = SeConf || {};
 
 SeConf.DataStore = function() {
-  this.endpoint = "http://files.jaribakken.com/tmp/";
+  this.endpoint = "https://raw.github.com/jarib/selenium-conf-app/master/data/";
   this.speakers = null;
   this.sessions = null;
 };
