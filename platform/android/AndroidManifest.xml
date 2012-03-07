@@ -3,11 +3,11 @@
 
 	<!-- TI_MANIFEST -->
 
-	<application android:debuggable="false" android:icon="@drawable/appicon" android:label="Codestrong" android:name="CodestrongApplication">
+	<application android:debuggable="false" android:icon="@drawable/appicon" android:label="Seleniumconf" android:name="SeleniumconfApplication">
 
 		<!-- TI_APPLICATION -->
 
-		<activity android:configChanges="keyboardHidden|orientation" android:label="Codestrong" android:name=".CodestrongActivity" android:screenOrientation="portrait" android:theme="@style/Theme.Titanium">
+		<activity android:configChanges="keyboardHidden|orientation" android:label="Seleniumconf" android:name=".SeleniumconfActivity" android:screenOrientation="portrait" android:theme="@style/Theme.Titanium">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
 				<category android:name="android.intent.category.LAUNCHER"/>
