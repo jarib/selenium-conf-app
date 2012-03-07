@@ -52,15 +52,9 @@ task :fetch do
   puts 'done.'
 
   print 'writing json...'
-  json_write session_rows, 'sessions.json', :index => 'nid'
-  json_write speaker_rows, 'speakers.json', :index => 'uid'
+  json_write session_rows, 'data/sessions.json', :index => 'nid'
+  json_write speaker_rows, 'data/speakers.json', :index => 'uid'
   puts 'done.'
-end
-
-desc 'Upload JSON to the server'
-task :upload do
-  host = ENV['host'] or raise "please specify the host"
-  sh "scp", "-r", "speakers.json", "sessions.json", "#{host}:/sites/files.jaribakken.com/www/tmp/"
 end
 
 task :refresh => [:fetch, :upload]
