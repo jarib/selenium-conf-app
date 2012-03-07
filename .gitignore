@@ -6,4 +6,3 @@ build/iphone/*
 .DS_Store
 build.log
 .fastdev.lock
-*.json
