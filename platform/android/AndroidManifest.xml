@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><manifest android:versionCode="1" android:versionName="1" package="com.appcelerator.codestrong" xmlns:android="http://schemas.android.com/apk/res/android">
+<?xml version="1.0" ?><manifest android:versionCode="1" android:versionName="1" package="com.jaribakken.seconf" xmlns:android="http://schemas.android.com/apk/res/android">
 	<supports-screens android:anyDensity="false"/><uses-sdk android:minSdkVersion="7"/>
 
 	<!-- TI_MANIFEST -->
