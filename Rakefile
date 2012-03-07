@@ -1,4 +1,13 @@
 require 'json'
+require 'time'
+
+def human_time_for(start, stop)
+  str = start.strftime("%B %d")
+  str << start.strftime(" %I:%M")
+  str << stop.strftime(" - %I:%M")
+
+  str
+end
 
 def json_write(rows, name, opts)
   rows = rows.dup
@@ -9,6 +18,11 @@ def json_write(rows, name, opts)
   rows.each_with_index do |row, idx|
     row_hash = {id => idx + 1}
     row.each_with_index { |e, i| row_hash[headers[i]] = e }
+
+    if row_hash['start_date']
+      row_hash['time'] = human_time_for(Time.parse(row_hash['start_date']), Time.parse(row_hash['end_date']))
+    end
+
     data << row_hash
   end
 
