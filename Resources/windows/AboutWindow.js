@@ -47,13 +47,13 @@
         	{
 	            title: 'Selenium Conference',
 	            view: Ti.UI.createWebView({
-	                url: 'pages/about.html'
+	                url: '/pages/about.html'
 	            })
         	},
         	{
 	            title: 'The App',
 	            view: Ti.UI.createWebView({
-	                url: 'pages/app.html'
+	                url: '/pages/app.html'
 	            })
         	}
         ];

@@ -69,11 +69,11 @@
             bottom: 10,
             layout: 'vertical',
             className: 'mainHeaderRow',
-            backgroundImage: 'images/sessionbckgd@2x.png',
+            backgroundImage: '/images/sessionbckgd@2x.png',
             backgroundPosition: 'bottom left',
             selectionStyle: 'none'
         });
-        headerRow[Codestrong.ui.backgroundSelectedProperty + 'Image'] = 'images/sessionbckgd@2x.png';
+        headerRow[Codestrong.ui.backgroundSelectedProperty + 'Image'] = '/images/sessionbckgd@2x.png';
 
         var bodyRow = Ti.UI.createTableViewRow({
             hasChild: false,
@@ -208,7 +208,7 @@
     };
 
     function renderPresenter(presenter) {
-        var userPict = (presenter.picture || 'images/userpict-large.png').replace(/^\s+|\s+$/g, '');
+        var userPict = (presenter.picture || '/images/userpict-large.png').replace(/^\s+|\s+$/g, '');
 
         var av = Ti.UI.createImageView({
             image: userPict,
@@ -216,7 +216,7 @@
             top: 5,
             height: 50,
             width: 50,
-            defaultImage: 'images/userpict-large.png',
+            defaultImage: '/images/userpict-large.png',
             backgroundColor: '#000',
             touchEnabled: false
         });

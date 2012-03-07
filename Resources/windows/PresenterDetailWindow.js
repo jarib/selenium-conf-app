@@ -57,18 +57,18 @@
         });
 
         var av = Ti.UI.createImageView({
-            image: (presenterData.picture || 'images/userpict-large.png').replace(/^\s+|\s+$/g, ''),
+            image: (presenterData.picture || '/images/userpict-large.png').replace(/^\s+|\s+$/g, ''),
             left: 0,
             top: 0,
             height: 110,
             width: 110,
-            defaultImage: 'images/userpict-large.png',
+            defaultImage: '/images/userpict-large.png',
             backgroundColor: '#000',
             touchEnabled: false
         });
         var headerRow = Ti.UI.createTableViewRow({
             height: 110,
-            backgroundImage: 'images/sessionbckgd@2x.png',
+            backgroundImage: '/images/sessionbckgd@2x.png',
             className: 'presHeaderRow',
             left: 0,
             top: -5,
@@ -76,7 +76,7 @@
             layout: 'vertical',
             selectionStyle: 'none'
         });
-        headerRow[Codestrong.ui.backgroundSelectedProperty + 'Image'] = 'images/sessionbckgd@2x.png';
+        headerRow[Codestrong.ui.backgroundSelectedProperty + 'Image'] = '/images/sessionbckgd@2x.png';
 
         var bioRow = Ti.UI.createTableViewRow({
             hasChild: false,

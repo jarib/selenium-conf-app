@@ -14,30 +14,30 @@
 		width: iconWidth,
 		list: [
 			{
-				image: 'images/dashboard/schedule' + imageSuffix + '.png',
+				image: '/images/dashboard/schedule' + imageSuffix + '.png',
 				func: Codestrong.ui.createDayWindow,
 				refresh: true
 			},
 			{
-				image: 'images/dashboard/maps' + imageSuffix + '.png',
+				image: '/images/dashboard/maps' + imageSuffix + '.png',
 				func: Codestrong.ui.createMapWindow
 			},
 			{
-				image: 'images/dashboard/news' + imageSuffix + '.png',
+				image: '/images/dashboard/news' + imageSuffix + '.png',
 				func: Codestrong.ui.createTwitterWindow
 			},
 			{
-				image: 'images/dashboard/speakers' + imageSuffix + '.png',
+				image: '/images/dashboard/speakers' + imageSuffix + '.png',
 				func: Codestrong.ui.createPresentersWindow,
 				refresh: true
 			},
 			{
-				image: 'images/dashboard/sponsors' + imageSuffix + '.png',
+				image: '/images/dashboard/sponsors' + imageSuffix + '.png',
 				func: Codestrong.ui.createHtmlWindow,
 				args: {url: Codestrong.ui.sponsorsPage, title:'Sponsors'}
 			},
 		    {
-				image: 'images/dashboard/about' + imageSuffix + '.png',
+				image: '/images/dashboard/about' + imageSuffix + '.png',
 				func: Codestrong.ui.createAboutWindow
 			}	
 		]

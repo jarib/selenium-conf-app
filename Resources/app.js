@@ -43,33 +43,33 @@ Ti.UI.setBackgroundColor('#414444');
 
 Ti.include(
 	// Codestrong libraries
-	'cs/cs.js',
-	'cs/ui.js',
-	'cs/datetime.js',
+	'/cs/cs.js',
+	'/cs/ui.js',
+	'/cs/datetime.js',
 
 	// data store
-	'datastore/datastore.js'
+	'/datastore/datastore.js'
 );
 
 
 Ti.include(
 	// All Codestrong windows
-  	'windows/ModalActivityIndicatorWindow.js',
-  	'windows/DayWindow.js',
-  	'windows/TwitterWindow.js',
-  	'windows/MapWindow.js',
-  	'windows/AboutWindow.js',
-  	'windows/TwitterDetailWindow.js',
-  	'windows/PresentersWindow.js',
-  	'windows/SessionsWindow.js',
-  	'windows/SessionDetailWindow.js',
-  	'windows/PresenterDetailWindow.js',
-  	'windows/HtmlWindow.js',
+  	'/windows/ModalActivityIndicatorWindow.js',
+  	'/windows/DayWindow.js',
+  	'/windows/TwitterWindow.js',
+  	'/windows/MapWindow.js',
+  	'/windows/AboutWindow.js',
+  	'/windows/TwitterDetailWindow.js',
+  	'/windows/PresentersWindow.js',
+  	'/windows/SessionsWindow.js',
+  	'/windows/SessionDetailWindow.js',
+  	'/windows/PresenterDetailWindow.js',
+  	'/windows/HtmlWindow.js',
 
   	// Create icons based on previous custom windows and
   	// load them into the main dashboard window
-  	'cs/icons.js',
-  	'windows/main.js'
+  	'/cs/icons.js',
+  	'/windows/main.js'
 );
 
 // open (sponsor) URLs in the native browser, not a webview

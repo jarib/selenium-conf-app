@@ -105,7 +105,7 @@
             // add a left navigation button for ios
             if (!Codestrong.isAndroid()) {
                 var leftButton = Ti.UI.createButton({
-                    backgroundImage: 'images/6dots.png',
+                    backgroundImage: '/images/6dots.png',
                     width: 41,
                     height: 30
                 });

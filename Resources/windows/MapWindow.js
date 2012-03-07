@@ -51,7 +51,7 @@
         	{
 	            title: 'Floor 3 - Grand Ballroom',
 	            shortTitle: '3rd Floor',
-	            url: 'pages/maps/map3.html',
+	            url: '/pages/maps/map3.html',
 	            animateOut: {
 	                left: -1 * Ti.Platform.displayCaps.platformWidth,
 	                top: Codestrong.ui.tabBarHeight,
@@ -67,7 +67,7 @@
         	{
 	            title: 'Floor 4 - Pacific Terrace',
 	            shortTitle: '4th Floor',
-	            url: 'pages/maps/map4.html',
+	            url: '/pages/maps/map4.html',
 	            animateOut: {
 	                left: Ti.Platform.displayCaps.platformWidth,
 	                top: Codestrong.ui.tabBarHeight,
@@ -107,7 +107,7 @@
             });
 
             var tabView = Ti.UI.createView({
-                backgroundImage: (i == 0) ? 'images/buttonbar/button2_selected.png' : 'images/buttonbar/button2_unselected_shadowL.png',
+                backgroundImage: (i == 0) ? '/images/buttonbar/button2_selected.png' : '/images/buttonbar/button2_unselected_shadowL.png',
                 height: Codestrong.ui.tabBarHeight,
                 left: i * (Ti.Platform.displayCaps.platformWidth / data.length),
                 right: Ti.Platform.displayCaps.platformWidth - ((parseInt(i) + 1) * (Ti.Platform.displayCaps.platformWidth / data.length)),
@@ -127,11 +127,11 @@
             });
             tabView.addEventListener('click', function (e) {
                 if (e.source.index == 0) {
-                    data[0].tabView.backgroundImage = 'images/buttonbar/button2_selected.png';
-                    data[1].tabView.backgroundImage = 'images/buttonbar/button2_unselected_shadowL.png';
+                    data[0].tabView.backgroundImage = '/images/buttonbar/button2_selected.png';
+                    data[1].tabView.backgroundImage = '/images/buttonbar/button2_unselected_shadowL.png';
                 } else if (e.source.index == 1) {
-                    data[0].tabView.backgroundImage = 'images/buttonbar/button2_unselected_shadowR.png';
-                    data[1].tabView.backgroundImage = 'images/buttonbar/button2_selected.png';
+                    data[0].tabView.backgroundImage = '/images/buttonbar/button2_unselected_shadowR.png';
+                    data[1].tabView.backgroundImage = '/images/buttonbar/button2_selected.png';
                 }
 
                 for (var j = 0; j < data.length; j++) {

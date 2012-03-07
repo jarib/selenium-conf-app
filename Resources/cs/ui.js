@@ -1,17 +1,17 @@
 (function() {
 	if (Codestrong.isLargeScreen()) {
 		Codestrong.ui = {
-			mainBackgroundImage: 'images/home_ipad.png',
+			mainBackgroundImage: '/images/home_ipad.png',
 			dashboardHeight: 340,
 			dashboardWidth: 612,
-			sponsorsPage:'pages/sponsors_ipad.html'
+			sponsorsPage:'/pages/sponsors_ipad.html'
 		};
 	} else {
 		Codestrong.ui = {
-			mainBackgroundImage: 'images/home.png',
+			mainBackgroundImage: '/images/home.png',
 			dashboardHeight: 170,
 			dashboardWidth: 306,
-			sponsorsPage:'pages/sponsors.html'
+			sponsorsPage:'/pages/sponsors.html'
 		};
 	}
 	
@@ -30,8 +30,8 @@
 		var headerRow = Ti.UI.createTableViewRow({
 	    	classname: 'header_row',
 	    	height:26,
-	    	backgroundImage: 'pages/timebreak_gray@2x.png',
-	    	selectedBackgroundImage:'pages/timebreak_gray@2x.png',
+	    	backgroundImage: '/pages/timebreak_gray@2x.png',
+	    	selectedBackgroundImage: '/pages/timebreak_gray@2x.png',
 	    	touchEnabled: false
 	    });
 	    var headerLabel = Ti.UI.createLabel({
@@ -55,10 +55,10 @@
 		var tabBarHeight = params.tabBarHeight || 36;
 		var width = params.width || Ti.Platform.displayCaps.platformWidth;
 		var images = {
-			selected: 'images/buttonbar/button2_selected.png',
-			unselected: 'images/buttonbar/button2_unselected_shadow.png',
-			unselectedLS: 'images/buttonbar/button2_unselected_shadowL.png',
-			unselectedRS: 'images/buttonbar/button2_unselected_shadowR.png',
+			selected: '/images/buttonbar/button2_selected.png',
+			unselected: '/images/buttonbar/button2_unselected_shadow.png',
+			unselectedLS: '/images/buttonbar/button2_unselected_shadowL.png',
+			unselectedRS: '/images/buttonbar/button2_unselected_shadowR.png',
 		};
 		var font = params.font || {fontSize: 14, fontWeight: 'bold'};
 		var item, backgroundImage, tabView, tabLabel, scrollable, i;
