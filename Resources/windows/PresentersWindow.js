@@ -92,7 +92,7 @@
                         font: {
                             fontWeight: 'bold'
                         },
-                        left: (fullName != '') ? 9 : 0,
+                        left: (speaker.full_name !== '') ? 9 : 0,
                         height: 40,
                         color: '#000',
                         touchEnabled: false
@@ -129,7 +129,7 @@
 
                 // If there is a new last name first letter, insert a header in the table.
                 // We also push a new index so we can create a right side index for iphone.
-                if (headerLetter == '' || speaker.last_name.charAt(0).toUpperCase() != headerLetter) {
+                if (headerLetter === '' || speaker.last_name.charAt(0).toUpperCase() != headerLetter) {
                     headerLetter = speaker.last_name.charAt(0).toUpperCase();
                     data.push(Codestrong.ui.createHeaderRow(headerLetter));
                     index.push({
