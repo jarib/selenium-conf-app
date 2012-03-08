@@ -55,8 +55,8 @@
             });
         };
         var data = [{
-        	title: '#seconf',
-        	view: createTwitterTable('#seconf'),
+          title: '#seconf',
+          view: createTwitterTable('#seconf'),
             url: 'http://search.twitter.com/search.json?q=%23seconf&result_type=recent&rpp=' + tweetCount,
             isSearch: true
         }, {
@@ -76,7 +76,7 @@
 
         twitterWindow.add(Codestrong.ui.createTabbedScrollableView({data:data}));
 
-		// add a click handler to all twitter tables
+    // add a click handler to all twitter tables
         for (var index in data) {
             item = data[index];
             item.view.addEventListener('click', function (e) {

@@ -55,27 +55,27 @@
 
         // Create data for TableView
         var data = [
-	        createDayRow({
-	            title: 'Monday, April 16th',
-	            titleShort: 'April 16th',
-	            start_date: Codestrong.datetime.strtotime('2012-04-16 00:00:00'), // TODO new Date...
-	            end_date: Codestrong.datetime.strtotime('2012-04-17 00:00:00'), // TODO new Date...
-	            scheduleListing: true
-	        }),
-	        createDayRow({
-	            title: 'Tuesday, April 17h',
-	            titleShort: 'April 17th',
-	            start_date: Codestrong.datetime.strtotime('2012-04-17 00:00:00'), // TODO new Date...
-	            end_date: Codestrong.datetime.strtotime('2012-04-18 00:00:00'), // TODO new Date...
-	            scheduleListing: true
-	        }),
-	        createDayRow({
-	            title: 'Wednesday, April 18th',
-	            titleShort: 'April 18th',
-	            start_date: Codestrong.datetime.strtotime('2012-04-18 00:00:00'), // TODO new Date...
-	            end_date: Codestrong.datetime.strtotime('2012-04-19 00:00:00'), // TODO new Date...
-	            scheduleListing: true
-	        }),
+          createDayRow({
+              title: 'Monday, April 16th',
+              titleShort: 'April 16th',
+              start_date: Codestrong.datetime.strtotime('2012-04-16 00:00:00'), // TODO new Date...
+              end_date: Codestrong.datetime.strtotime('2012-04-17 00:00:00'), // TODO new Date...
+              scheduleListing: true
+          }),
+          createDayRow({
+              title: 'Tuesday, April 17h',
+              titleShort: 'April 17th',
+              start_date: Codestrong.datetime.strtotime('2012-04-17 00:00:00'), // TODO new Date...
+              end_date: Codestrong.datetime.strtotime('2012-04-18 00:00:00'), // TODO new Date...
+              scheduleListing: true
+          }),
+          createDayRow({
+              title: 'Wednesday, April 18th',
+              titleShort: 'April 18th',
+              start_date: Codestrong.datetime.strtotime('2012-04-18 00:00:00'), // TODO new Date...
+              end_date: Codestrong.datetime.strtotime('2012-04-19 00:00:00'), // TODO new Date...
+              scheduleListing: true
+          }),
         ];
 
         // create main day window

@@ -44,18 +44,18 @@
             fullscreen: false
         });
         var data = [
-        	{
-	            title: 'Selenium Conference',
-	            view: Ti.UI.createWebView({
-	                url: '/pages/about.html'
-	            })
-        	},
-        	{
-	            title: 'The App',
-	            view: Ti.UI.createWebView({
-	                url: '/pages/app.html'
-	            })
-        	}
+          {
+              title: 'Selenium Conference',
+              view: Ti.UI.createWebView({
+                  url: '/pages/about.html'
+              })
+          },
+          {
+              title: 'The App',
+              view: Ti.UI.createWebView({
+                  url: '/pages/app.html'
+              })
+          }
         ];
 
         aboutWindow.add(Codestrong.ui.createTabbedScrollableView({data:data}));

@@ -91,7 +91,7 @@
 
         for (var i = 0; i < data.length; i++) {
             var myEntry = data[i];
-            
+
             if (myEntry.type == 'web') {
                 myEntry.view = Ti.UI.createWebView({
                     scalesPageToFit: true,

@@ -25,7 +25,7 @@
  *
  * The following Appcelerator Employees also spent time answering questions via phone calls, IRC
  * and email and contributed code to the original Drupalcon Mobile application.
- * 
+ *
  * Tony Guntharp
  * Chad Auld
  * Don Thorp
