@@ -108,7 +108,7 @@
 
       // adjust images and scroll ScrollableView on tab bar clicks
             tabView.addEventListener('click', function (e) {
-              if (!e.source || !e.source.index) {
+              if (e.source === undefined || e.source.index === undefined) {
                 // TODO: check out why this fails on android
                 return false;
               }
