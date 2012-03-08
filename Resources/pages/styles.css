@@ -72,6 +72,28 @@ span.sponsor {
   font-style: italic;
 }
 
+/* Directions
+-------------------------------- */
+body.directions {
+  padding-top: 10px; */
+  margin: 0 20px 10px;  
+}
+.directions h1,
+.directions h2 {
+  color: #dc5531;
+  font-weight: normal;
+  letter-spacing: 0.1px;
+}
+.directions h1 {
+  font-size: 1.4em;
+}
+.directions h2 {
+  font-size: 1.2em;
+}
+.directions h3 {
+  font-size: 1em;
+}
+
 /* About page 
 -------------------------------- */
 body.about {

@@ -38,7 +38,7 @@
     Codestrong.ui.createMapWindow = function () {
         var mapWindow = Titanium.UI.createWindow({
             id: 'mapWindow',
-            title: 'The Strand Palace Hotel',
+            title: 'Venue - The Strand Palace Hotel',
             backgroundColor: '#FFF',
             barColor: '#414444',
             height: '100%',
@@ -50,24 +50,24 @@
         var data = [
             {
                 type: 'map',
-                title: 'Map - The Strand Palace Hotel',
+                title: 'Map',
+                atitle: 'The Strand Palace Hotel',
+                asubtitle: '372 Strand, London WC2R 0JJ, United Kingdom',
                 shortTitle: 'Map',
-                latitude: 51.509464,
-                longitude: -0.118983,
-                annot_title: 'The Strand Palace Hotel',
-                annot_subtitle: '2 Savoy Pl, London, UK'
+                latitude: 51.511013,
+                longitude: -0.119455
             },
             {
                 type: 'web',
-                title: 'Directions - The Strand Palace Hotel',
+                title: 'Directions',
                 shortTitle: 'Directions',
-                url: '/pages/maps/directions.html'
+                url: '/pages/directions.html'
             },
             {
                 type: 'web',
-                title: 'Site - The Strand Palace Hotel',
-                shortTitle: 'Hotel Site',
-                url: 'http://www.strandpalacehotel.co.uk/'
+                title: 'Venue\'s Website',
+                shortTitle: 'Venue\'s Site',
+                url: 'http://www.strandpalacehotel.co.uk'
             }
         ];
 
@@ -99,8 +99,8 @@
                 var annotation = Ti.Map.createAnnotation({
                     latitude: myEntry.latitude,
                     longitude: myEntry.longitude,
-                    title: myEntry.annot_title,
-                    subtitle: myEntry.annot_subtitle,
+                    title: myEntry.atitle,
+                    subtitle: myEntry.asubtitle,
                     pincolor: Titanium.Map.ANNOTATION_RED,
                     animate: true
                  });
@@ -113,10 +113,10 @@
                      mapType: Titanium.Map.STANDARD_TYPE,
                      region: {latitude: myEntry.latitude, longitude: myEntry.longitude,
                               latitudeDelta:0.01, longitudeDelta:0.01},
-                     animate:true,
-                     regionFit:true,
-                     userLocation:true,
-                     annotations:[annotation]
+                     animate: true,
+                     regionFit: true,
+                     userLocation: true,
+                     annotations: [annotation]
                  });
             }
             if (i !== 0) {
@@ -163,7 +163,7 @@
         mapWindow.add(tabbedBarView);
         for (var j = 0; j < data.length; j++) {
             mapWindow.add(data[j].view);
-        };
+        }
 
         return mapWindow;
     };
