@@ -25,7 +25,7 @@
  *
  * The following Appcelerator Employees also spent time answering questions via phone calls, IRC
  * and email and contributed code to the original Drupalcon Mobile application.
- * 
+ *
  * Tony Guntharp
  * Chad Auld
  * Don Thorp
@@ -38,7 +38,7 @@
     Codestrong.ui.createMapWindow = function () {
         var mapWindow = Titanium.UI.createWindow({
             id: 'mapWindow',
-            title: 'Meeting Room Maps',
+            title: 'The Strand Palace Hotel',
             backgroundColor: '#FFF',
             barColor: '#414444',
             height: '100%',
@@ -48,38 +48,27 @@
         // create table view data object
         var duration = 250;
         var data = [
-        	{
-	            title: 'Floor 3 - Grand Ballroom',
-	            shortTitle: '3rd Floor',
-	            url: '/pages/maps/map3.html',
-	            animateOut: {
-	                left: -1 * Ti.Platform.displayCaps.platformWidth,
-	                top: Codestrong.ui.tabBarHeight,
-	                duration: duration
-	            },
-	            animateIn: {
-	                left: 0,
-	                top: Codestrong.ui.tabBarHeight,
-	                duration: duration
-	            },
-	            left: 0
-        	}, 
-        	{
-	            title: 'Floor 4 - Pacific Terrace',
-	            shortTitle: '4th Floor',
-	            url: '/pages/maps/map4.html',
-	            animateOut: {
-	                left: Ti.Platform.displayCaps.platformWidth,
-	                top: Codestrong.ui.tabBarHeight,
-	                duration: duration
-	            },
-	            animateIn: {
-	                left: 0,
-	                top: Codestrong.ui.tabBarHeight,
-	                duration: duration
-	            },
-	            left: Ti.Platform.displayCaps.platformWidth
-        	}
+            {
+                type: 'map',
+                title: 'Map - The Strand Palace Hotel',
+                shortTitle: 'Map',
+                latitude: 51.509464,
+                longitude: -0.118983,
+                annot_title: 'The Strand Palace Hotel',
+                annot_subtitle: '2 Savoy Pl, London, UK'
+            },
+            {
+                type: 'web',
+                title: 'Directions - The Strand Palace Hotel',
+                shortTitle: 'Directions',
+                url: '/pages/maps/directions.html'
+            },
+            {
+                type: 'web',
+                title: 'Site - The Strand Palace Hotel',
+                shortTitle: 'Hotel Site',
+                url: 'http://www.strandpalacehotel.co.uk/'
+            }
         ];
 
         var tabbedBarView = Ti.UI.createView({
@@ -96,21 +85,49 @@
 
         for (var i = 0; i < data.length; i++) {
             var myEntry = data[i];
-
-            myEntry.webview = Ti.UI.createWebView({
-                scalesPageToFit: true,
-                url: myEntry.url,
-                top: Codestrong.ui.tabBarHeight,
-                bottom: 0,
-                left: myEntry.left,
-                width: Ti.Platform.displayCaps.platformWidth
-            });
+            
+            if (myEntry.type == 'web') {
+                myEntry.view = Ti.UI.createWebView({
+                    scalesPageToFit: true,
+                    url: myEntry.url,
+                    top: Codestrong.ui.tabBarHeight,
+                    bottom: 0,
+                    left: 0,
+                    width: Ti.Platform.displayCaps.platformWidth
+                });
+            } else {
+                var annotation = Ti.Map.createAnnotation({
+                    latitude: myEntry.latitude,
+                    longitude: myEntry.longitude,
+                    title: myEntry.annot_title,
+                    subtitle: myEntry.annot_subtitle,
+                    pincolor: Titanium.Map.ANNOTATION_RED,
+                    animate: true
+                 });
+                 myEntry.view = Ti.Map.createView({
+                     scalesPageToFit: true,
+                     top: Codestrong.ui.tabBarHeight,
+                     bottom: 0,
+                     left: 0,
+                     width: Ti.Platform.displayCaps.platformWidth,
+                     mapType: Titanium.Map.STANDARD_TYPE,
+                     region: {latitude: myEntry.latitude, longitude: myEntry.longitude,
+                              latitudeDelta:0.01, longitudeDelta:0.01},
+                     animate:true,
+                     regionFit:true,
+                     userLocation:true,
+                     annotations:[annotation]
+                 });
+            }
+            if (i !== 0) {
+                myEntry.view.hide();
+            }
 
             var tabView = Ti.UI.createView({
                 backgroundImage: (i == 0) ? '/images/buttonbar/button2_selected.png' : '/images/buttonbar/button2_unselected_shadowL.png',
                 height: Codestrong.ui.tabBarHeight,
                 left: i * (Ti.Platform.displayCaps.platformWidth / data.length),
-                right: Ti.Platform.displayCaps.platformWidth - ((parseInt(i) + 1) * (Ti.Platform.displayCaps.platformWidth / data.length)),
+                right: Ti.Platform.displayCaps.platformWidth - ((parseInt(i, 10) + 1) * (Ti.Platform.displayCaps.platformWidth / data.length)),
                 index: i
             });
 
@@ -126,21 +143,13 @@
                 }
             });
             tabView.addEventListener('click', function (e) {
-                if (e.source.index == 0) {
-                    data[0].tabView.backgroundImage = '/images/buttonbar/button2_selected.png';
-                    data[1].tabView.backgroundImage = '/images/buttonbar/button2_unselected_shadowL.png';
-                } else if (e.source.index == 1) {
-                    data[0].tabView.backgroundImage = '/images/buttonbar/button2_unselected_shadowR.png';
-                    data[1].tabView.backgroundImage = '/images/buttonbar/button2_selected.png';
-                }
-
                 for (var j = 0; j < data.length; j++) {
-                    if (e.source.index == 0) {
-                        data[0].webview.animate(data[0].animateIn);
-                        data[1].webview.animate(data[1].animateOut);
+                    if (e.source.index === j) {
+                        data[j].view.show();
+                        data[j].tabView.backgroundImage = '/images/buttonbar/button2_selected.png';
                     } else {
-                        data[0].webview.animate(data[0].animateOut);
-                        data[1].webview.animate(data[1].animateIn);
+                        data[j].view.hide();
+                          data[j].tabView.backgroundImage = '/images/buttonbar/button2_unselected_shadowL.png';
                     }
                 }
             });
@@ -152,8 +161,9 @@
 
         tabbedBarView.add(tabbedBar);
         mapWindow.add(tabbedBarView);
-        mapWindow.add(data[0].webview);
-        mapWindow.add(data[1].webview);
+        for (var j = 0; j < data.length; j++) {
+            mapWindow.add(data[j].view);
+        };
 
         return mapWindow;
     };
