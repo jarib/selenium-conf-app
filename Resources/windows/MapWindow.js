@@ -38,7 +38,7 @@
     Codestrong.ui.createMapWindow = function () {
         var mapWindow = Titanium.UI.createWindow({
             id: 'mapWindow',
-            title: 'Venue - The Strand Palace Hotel',
+            title: 'Venue - Savoy Place',
             backgroundColor: '#FFF',
             barColor: '#414444',
             height: '100%',
@@ -50,24 +50,30 @@
         var data = [
             {
                 type: 'map',
-                title: 'Map',
-                atitle: 'The Strand Palace Hotel',
-                asubtitle: '372 Strand, London WC2R 0JJ, United Kingdom',
-                shortTitle: 'Map',
-                latitude: 51.511013,
-                longitude: -0.119455
+                title: 'Maps',
+                latitude: 51.514771,
+                longitude: -0.124176,
+                delta: 0.02,
+                annotations: [
+                    {title: 'Savoy Place (Venue)',
+                     subtitle: '2 Savoy Place, London WC2R 0BL, United Kingdom',
+                     latitude: 51.509771,
+                     longitude: -0.119176},
+                    {title: 'Unknown Location (Party)',
+                     subtitle: 'This will remain secret',
+                     latitude: 51.519771,
+                     longitude: -0.129176}
+                ]
             },
             {
                 type: 'web',
                 title: 'Directions',
-                shortTitle: 'Directions',
                 url: '/pages/directions.html'
             },
             {
                 type: 'web',
-                title: 'Venue\'s Website',
-                shortTitle: 'Venue\'s Site',
-                url: 'http://www.strandpalacehotel.co.uk'
+                title: 'Venue\'s Site',
+                url: 'http://savoyplace.theiet.org/'
             }
         ];
 
@@ -95,36 +101,45 @@
                     left: 0,
                     width: Ti.Platform.displayCaps.platformWidth
                 });
-            } else {
-                var annotation = Ti.Map.createAnnotation({
-                    latitude: myEntry.latitude,
-                    longitude: myEntry.longitude,
-                    title: myEntry.atitle,
-                    subtitle: myEntry.asubtitle,
-                    pincolor: Titanium.Map.ANNOTATION_RED,
-                    animate: true
-                 });
-                 myEntry.view = Ti.Map.createView({
-                     scalesPageToFit: true,
-                     top: Codestrong.ui.tabBarHeight,
-                     bottom: 0,
-                     left: 0,
-                     width: Ti.Platform.displayCaps.platformWidth,
-                     mapType: Titanium.Map.STANDARD_TYPE,
-                     region: {latitude: myEntry.latitude, longitude: myEntry.longitude,
-                              latitudeDelta:0.01, longitudeDelta:0.01},
-                     animate: true,
-                     regionFit: true,
-                     userLocation: true,
-                     annotations: [annotation]
-                 });
-            }
-            if (i !== 0) {
-                myEntry.view.hide();
+            } else if (myEntry.type == 'map') {
+                var annotationParams,
+                    annotations = [];
+                for (var j = 0; j < myEntry.annotations.length; j++) {
+                    var annotation = myEntry.annotations[j];
+                    annotationParams = {
+                        latitude: annotation.latitude,
+                        longitude: annotation.longitude,
+                        title: annotation.title,
+                        subtitle: annotation.subtitle,
+                        animate: true
+                    };
+                    if (Codestrong.isAndroid()) {
+                        annotationParams.image = '/images/map-pin.png';
+                    } else {
+                        annotationParams.pincolor = Titanium.Map.ANNOTATION_RED;
+                    }
+                    annotations.push(Ti.Map.createAnnotation(annotationParams));
+                }
+                myEntry.view = Ti.Map.createView({
+                    scalesPageToFit: true,
+                    top: Codestrong.ui.tabBarHeight,
+                    bottom: 0,
+                    left: 0,
+                    width: Ti.Platform.displayCaps.platformWidth,
+                    mapType: Titanium.Map.STANDARD_TYPE,
+                    region: {latitude: myEntry.latitude,
+                             longitude: myEntry.longitude,
+                             latitudeDelta: myEntry.delta,
+                             longitudeDelta: myEntry.delta},
+                    animate: true,
+                    regionFit: true,
+                    userLocation: true,
+                    annotations: annotations
+                });
             }
 
             var tabView = Ti.UI.createView({
-                backgroundImage: (i == 0) ? '/images/buttonbar/button2_selected.png' : '/images/buttonbar/button2_unselected_shadowL.png',
+                backgroundImage: (i === 0) ? '/images/buttonbar/button2_selected.png' : '/images/buttonbar/button2_unselected_shadowL.png',
                 height: Codestrong.ui.tabBarHeight,
                 left: i * (Ti.Platform.displayCaps.platformWidth / data.length),
                 right: Ti.Platform.displayCaps.platformWidth - ((parseInt(i, 10) + 1) * (Ti.Platform.displayCaps.platformWidth / data.length)),
@@ -132,7 +147,7 @@
             });
 
             var tabLabel = Ti.UI.createLabel({
-                text: myEntry.shortTitle,
+                text: myEntry.title,
                 textAlign: 'center',
                 color: '#fff',
                 height: 'auto',
@@ -157,12 +172,17 @@
             tabView.add(tabLabel);
             tabbedBar.add(tabView);
             myEntry.tabView = tabView;
+
+            if (i !== 0) {
+                myEntry.view.hide();
+            }
+
         }
 
         tabbedBarView.add(tabbedBar);
         mapWindow.add(tabbedBarView);
-        for (var j = 0; j < data.length; j++) {
-            mapWindow.add(data[j].view);
+        for (var k = data.length-1; k >= 0; k--) {
+            mapWindow.add(data[k].view);
         }
 
         return mapWindow;
