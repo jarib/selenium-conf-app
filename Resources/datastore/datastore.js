@@ -26,7 +26,7 @@ SeConf.DataStore.prototype.refreshSessions = function() {
 
 SeConf.DataStore.prototype.getSpeakers = function() {
   if(!this.speakers) {
-    this.speakers = JSON.parse(Ti.App.Properties.getString('speakers', '{}'));
+    this.speakers = JSON.parse(Ti.App.Properties.getString('speakers', '[]'));
     this.refreshIfNecessary(this.speakers);
   }
 
@@ -35,7 +35,7 @@ SeConf.DataStore.prototype.getSpeakers = function() {
 
 SeConf.DataStore.prototype.getSessions = function() {
   if (!this.sessions) {
-    this.sessions = JSON.parse(Ti.App.Properties.getString('sessions', '{}'));
+    this.sessions = JSON.parse(Ti.App.Properties.getString('sessions', '[]'));
     this.refreshIfNecessary(this.speakers);
   }
 
