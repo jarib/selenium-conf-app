@@ -106,12 +106,15 @@
                 font: font
             });
 
-      // adjust images and scroll ScrollableView on tab bar clicks
+            // adjust images and scroll ScrollableView on tab bar clicks
             tabView.addEventListener('click', function (e) {
               if (e.source === undefined || e.source.index === undefined) {
                 // TODO: check out why this fails on android
-                return false;
+                Titanium.API.info("missing source or index, source:" + e.source + ", index: " + e.source.index);
+                return true;
               }
+
+              Titanium.API.info("found source and index, source:" + e.source + ", index: " + e.source.index);
 
               var index = e.source.index;
               for (var j = 0; j < data.length; j++) {

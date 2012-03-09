@@ -126,7 +126,7 @@
                             buttons: [{
                                 title: "Update",
                                 clickevent: function () {
-                                    Ti.fireEvent('codestrong:update_data');
+                                    Ti.App.fireEvent('codestrong:update_data');
                                 }
                             }]
                         });
@@ -137,7 +137,7 @@
                     });
                     iconWin.rightNavButton = rightButton;
                     rightButton.addEventListener('click', function () {
-                        Ti.fireEvent('codestrong:update_data');
+                        Ti.App.fireEvent('codestrong:update_data');
                     });
                 }
             }
@@ -171,13 +171,14 @@
         updateCount++;
         if (updateCount >= 2) {
             updateCount = 0;
-            Ti.App.fireEvent('app:update_presenters');
+            Ti.App.fireEvent('app:update_sessions');
+            Ti.App.fireEvent('app:update_speakers');
             Codestrong.ui.activityIndicator.hideModal();
         }
     });
 
-    Ti.addEventListener('codestrong:update_data', function (e) {
-      Ti.API.debug("updating data");
+    Titanium.App.addEventListener('codestrong:update_data', function (e) {
+        Ti.API.debug("updating data");
         Codestrong.ui.activityIndicator.showModal('Loading sessions and speakers...', updateTimeout, 'Connection timed out. All session and speaker data may not have updated.');
         updateCount = 0;
 

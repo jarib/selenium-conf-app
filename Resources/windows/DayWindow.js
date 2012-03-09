@@ -112,8 +112,7 @@
 
         });
 
-        SeConf.datastore.getSessions(); // we want to make the inital request here.
-
+        SeConf.datastore.getSessions(); // we want to make the initial request here.
         return dayWindow;
     };
 })();

@@ -11,16 +11,16 @@ SeConf.DataStore.timeout = 11000;
 SeConf.DataStore.prototype.refreshSpeakers = function() {
   this.fetch_(this.endpoint + "speakers.json", function(data) {
     SeConf.datastore.speakers = data;
-    Titanium.fireEvent("datastore:update_completed");
     Ti.App.Properties.setString('speakers', JSON.stringify(data));
+    Titanium.App.fireEvent("datastore:update_completed");
   });
 };
 
 SeConf.DataStore.prototype.refreshSessions = function() {
   this.fetch_(this.endpoint + "sessions.json", function(data) {
     SeConf.datastore.sessions = data;
-    Titanium.fireEvent("datastore:update_completed");
     Ti.App.Properties.setString('sessions', JSON.stringify(data));
+    Titanium.App.fireEvent("datastore:update_completed");
   });
 }
 
@@ -99,7 +99,7 @@ SeConf.DataStore.prototype.getSessionsForSpeaker = function(name) {
 
 SeConf.DataStore.prototype.refreshIfNecessary = function(data) {
   if(!data || data.length == 0) {
-    Ti.fireEvent("codestrong:update_data");
+    Ti.App.fireEvent("codestrong:update_data");
   }
 };
 
@@ -131,8 +131,11 @@ SeConf.DataStore.prototype.fetch_ = function(url, callback) {
   };
 
   xhr.onload = function () {
+    Ti.API.info("onload: " + this.responseText);
     callback(eval(this.responseText));
   };
+
+  Ti.API.info("fetching " + url);
   xhr.send();
 };
 

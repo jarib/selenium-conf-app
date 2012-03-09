@@ -146,7 +146,7 @@
         };
 
         PresentersWindow.doRefresh();
-        Ti.App.addEventListener('app:update_presenters', function () {
+        Ti.App.addEventListener('app:update_speakers', function () {
             PresentersWindow.doRefresh();
         });
 

@@ -47,8 +47,8 @@
 
         var data = [];
 
-    // Create session rows
-    var lastTime = '';
+        // Create session rows
+        var lastTime = '';
 
         var sessions = SeConf.datastore.getSessionsFor(settings.start_date, settings.end_date);
         for (var sessionNum = 0, numSessions = sessions.length; sessionNum < numSessions; sessionNum++) {
@@ -69,7 +69,7 @@
                 layout: 'vertical',
                 focusable: true
             });
-      sessionRow[Codestrong.ui.backgroundSelectedProperty + 'Color'] = Codestrong.ui.backgroundSelectedColor;
+            sessionRow[Codestrong.ui.backgroundSelectedProperty + 'Color'] = Codestrong.ui.backgroundSelectedColor;
 
             var leftSpace = 10;
             var titleColor = '#d32101';
@@ -130,10 +130,11 @@
             sessionRow.add(presLabel);
             sessionRow.add(roomLabel);
 
-      if (headerRow) {
-        data.push(headerRow);
-      }
-      data.push(sessionRow);
+            if (headerRow) {
+              data.push(headerRow);
+            }
+
+            data.push(sessionRow);
         }
 
         // create table view
