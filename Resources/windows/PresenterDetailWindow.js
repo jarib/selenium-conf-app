@@ -62,7 +62,7 @@
             top: 0,
             height: 110,
             width: 110,
-            defaultImage: '/images/userpict-large.png',
+            defaultImage: '/images/selenium-logo.png',
             backgroundColor: '#000',
             touchEnabled: false
         });
