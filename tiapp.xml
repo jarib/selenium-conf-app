@@ -9,7 +9,7 @@
         <target device="android">true</target>
     </deployment-targets>
     <id>com.jaribakken.seconf</id>
-    <name>Seleniumconf</name>
+    <name>SeConf</name>
     <version>1.0</version>
     <publisher>Jari Bakken</publisher>
     <url>http://seleniumconf.org</url>
