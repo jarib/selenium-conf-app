@@ -110,7 +110,7 @@
             tabView.addEventListener('click', function (e) {
               if (e.source === undefined || e.source.index === undefined) {
                 // TODO: check out why this fails on android
-                Titanium.API.info("missing source or index, source:" + e.source + ", index: " + e.source.index);
+                Titanium.API.info("missing source or index, source:" + e.source);
                 return true;
               }
 
