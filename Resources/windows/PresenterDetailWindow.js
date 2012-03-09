@@ -57,7 +57,7 @@
         });
 
         var av = Ti.UI.createImageView({
-            image: (presenterData.picture || '/images/userpict-large.png').replace(/^\s+|\s+$/g, ''),
+            image: (presenterData.picture || '/images/selenium-logo.png').replace(/^\s+|\s+$/g, ''),
             left: 0,
             top: 0,
             height: 110,

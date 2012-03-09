@@ -208,7 +208,7 @@
     };
 
     function renderPresenter(presenter) {
-        var userPict = (presenter.picture || '/images/userpict-large.png').replace(/^\s+|\s+$/g, '');
+        var userPict = (presenter.picture || '/images/selenium-logo.png').replace(/^\s+|\s+$/g, '');
 
         var av = Ti.UI.createImageView({
             image: userPict,
@@ -216,7 +216,7 @@
             top: 5,
             height: 50,
             width: 50,
-            defaultImage: '/images/userpict-large.png',
+            defaultImage: '/images/selenium-logo.png',
             backgroundColor: '#000',
             touchEnabled: false
         });
