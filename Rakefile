@@ -9,7 +9,7 @@ def human_time_for(start, stop)
   str
 end
 
-def json_write(rows, name, opts)
+def json_write(rows, name, opts = {})
   rows = rows.dup
   id = opts[:index] || 'id'
 
@@ -49,11 +49,14 @@ task :fetch do
   print 'fetching rows...'
   session_rows = sheet.worksheets[0].rows
   speaker_rows = sheet.worksheets[1].rows
+  sponsor_rows = sheet.worksheets[2].rows
   puts 'done.'
 
   print 'writing json...'
   json_write session_rows, 'data/sessions.json', :index => 'nid'
   json_write speaker_rows, 'data/speakers.json', :index => 'uid'
+  json_write sponsor_rows, 'data/sponsors.json'
+  
   puts 'done.'
 end
 
