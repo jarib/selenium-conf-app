@@ -33,8 +33,7 @@
       },
       {
         image: '/images/dashboard/sponsors' + imageSuffix + '.png',
-        func: Codestrong.ui.createHtmlWindow,
-        args: {url: Codestrong.ui.sponsorsPage, title:'Sponsors'}
+        func: Codestrong.ui.createSponsorsWindow,
       },
         {
         image: '/images/dashboard/about' + imageSuffix + '.png',

@@ -42,6 +42,16 @@ SeConf.DataStore.prototype.getSessions = function() {
   return this.sessions;
 };
 
+SeConf.DataStore.prototype.getSponsors = function() {
+  if(!this.sponsors) {
+    this.sponsors = JSON.parse(Ti.App.Properties.getString('sponsors', '[]'));
+    this.refreshIfNecessary(this.sponsors);
+  }
+
+  return this.sponsors;
+};
+
+
 SeConf.DataStore.prototype.sessionAt = function(nid) {
   var sessions = this.getSessions();
   for(var i = 0; i < sessions.length; i++) {
@@ -132,7 +142,7 @@ SeConf.DataStore.prototype.fetch_ = function(url, callback) {
 
   xhr.onload = function () {
     Ti.API.info("onload: " + this.responseText);
-    callback(eval(this.responseText));
+    callback(JSON.parse(this.responseText));
   };
 
   Ti.API.info("fetching " + url);

@@ -124,6 +124,9 @@ body.about {
   margin: 0.6em 0;
 }
 
+.about img { width: 250px; }
+.about ul { list-style: none; }
+
 /* Monday page 
 -------------------------------- */
 body.day {

@@ -63,6 +63,7 @@ Ti.include(
     '/windows/PresentersWindow.js',
     '/windows/SessionsWindow.js',
     '/windows/SessionDetailWindow.js',
+    '/windows/SponsorsWindow.js',
     '/windows/PresenterDetailWindow.js',
     '/windows/HtmlWindow.js',
 
