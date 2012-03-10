@@ -112,7 +112,10 @@
 
         });
 
-        SeConf.datastore.getSessions(); // we want to make the initial request here.
+        dayWindow.addEventListener('open', function() {
+            SeConf.datastore.getSessions(); // we want to make the initial request here.
+        });
+
         return dayWindow;
     };
 })();
