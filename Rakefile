@@ -9,7 +9,7 @@ def human_time_for(start, stop)
   str
 end
 
-def json_write(rows, name, opts = {})
+def as_json(rows, opts = {})
   rows = rows.dup
   id = opts[:index] || 'id'
 
@@ -26,7 +26,7 @@ def json_write(rows, name, opts = {})
     data << row_hash
   end
 
-  File.open(name, "w") { |file| file << data.to_json }
+  data
 end
 
 
@@ -53,10 +53,13 @@ task :fetch do
   puts 'done.'
 
   print 'writing json...'
-  json_write session_rows, 'data/sessions.json', :index => 'nid'
-  json_write speaker_rows, 'data/speakers.json', :index => 'uid'
-  json_write sponsor_rows, 'data/sponsors.json'
+  data = {
+    :sessions => as_json(session_rows, :index => 'nid'),
+    :speakers => as_json(speaker_rows, :index => 'uid'),
+    :sponsors => as_json(sponsor_rows)
+  }
   
+  File.open("data/seconf.json", "w") { |file| file << data.to_json }
   puts 'done.'
 end
 
