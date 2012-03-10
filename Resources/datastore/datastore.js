@@ -4,25 +4,25 @@ SeConf.DataStore = function() {
   this.endpoint = "https://raw.github.com/jarib/selenium-conf-app/master/data/";
   this.speakers = null;
   this.sessions = null;
+  this.sponsors = null;
 };
 
 SeConf.DataStore.timeout = 11000;
 
-SeConf.DataStore.prototype.refreshSpeakers = function() {
-  this.fetch_(this.endpoint + "speakers.json", function(data) {
-    SeConf.datastore.speakers = data;
-    Ti.App.Properties.setString('speakers', JSON.stringify(data));
+SeConf.DataStore.prototype.refresh = function() {
+  this.fetch_(this.endpoint + "seconf.json", function(data) {
+    SeConf.datastore.speakers = data.speakers;
+    Ti.App.Properties.setString('speakers', JSON.stringify(data.speakers));
+    
+    SeConf.datastore.sessions = data.sessions;
+    Ti.App.Properties.setString('sessions', JSON.stringify(data.sessions));
+
+    SeConf.datastore.sponsors = data.sponsors;
+    Ti.App.Properties.setString('sponsors', JSON.stringify(data.sponsors));
+    
     Titanium.App.fireEvent("datastore:update_completed");
   });
 };
-
-SeConf.DataStore.prototype.refreshSessions = function() {
-  this.fetch_(this.endpoint + "sessions.json", function(data) {
-    SeConf.datastore.sessions = data;
-    Ti.App.Properties.setString('sessions', JSON.stringify(data));
-    Titanium.App.fireEvent("datastore:update_completed");
-  });
-}
 
 SeConf.DataStore.prototype.getSpeakers = function() {
   if(!this.speakers) {

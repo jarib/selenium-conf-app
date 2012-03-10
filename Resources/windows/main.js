@@ -166,15 +166,9 @@
     }
 
     // Handle sessions and speaker updates
-    var updateCount = 0;
     Ti.App.addEventListener('datastore:update_completed', function (e) {
-        updateCount++;
-        if (updateCount >= 2) {
-            updateCount = 0;
-            Ti.App.fireEvent('app:update_sessions');
-            Ti.App.fireEvent('app:update_speakers');
-            Codestrong.ui.activityIndicator.hideModal();
-        }
+        Codestrong.ui.activityIndicator.hideModal();
+      }
     });
 
     Ti.App.addEventListener('codestrong:update_data', function (e) {
@@ -182,7 +176,6 @@
         Codestrong.ui.activityIndicator.showModal('Loading sessions and speakers...', updateTimeout, 'Connection timed out. All session and speaker data may not have updated.');
         updateCount = 0;
 
-        SeConf.datastore.refreshSessions();
-        SeConf.datastore.refreshSpeakers();
+        SeConf.datastore.refresh();
     });
 })();
