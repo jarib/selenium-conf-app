@@ -1,0 +1,5 @@
+projectDirectory = "$CWD"
+
+myExtraExcludes = "build"
+excludeInFileChooser  = "{$excludeInFileChooser,$myExtraExcludes}" 
+excludeInFolderSearch = "{$excludeInFolderSearch,$myExtraExcludes}" 
