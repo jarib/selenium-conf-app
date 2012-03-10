@@ -1,4 +1,4 @@
-/* HTML5 Resets and Styles 
+/* HTML5 Resets and Styles
 -------------------------------- */
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p {
@@ -8,16 +8,16 @@ h1, h2, h3, h4, h5, h6, p {
   outline:0;
   vertical-align:baseline;
   background:transparent;
-}                  
+}
 article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section { 
+footer, header, hgroup, menu, nav, section {
     display:block;
 }
 .hidden {
   position: absolute; left: -100%;
 }
 
-/* General Styles 
+/* General Styles
 -------------------------------- */
 body {
   color: #000;
@@ -44,7 +44,7 @@ h3 {
 }
 p {
   text-align:left;
-  color: #000;      
+  color: #000;
   line-height: 1.4em;
   margin: 1em 0;
 }
@@ -76,7 +76,7 @@ span.sponsor {
 -------------------------------- */
 body.directions {
   padding-top: 10px; */
-  margin: 0 20px 10px;  
+  margin: 0 20px 10px;
 }
 .directions h1,
 .directions h2 {
@@ -94,11 +94,11 @@ body.directions {
   font-size: 1em;
 }
 
-/* About page 
+/* About page
 -------------------------------- */
 body.about {
   padding-top: 10px; */
-  margin: 0 20px 10px;  
+  margin: 0 20px 10px;
 }
 .about h1,
 .about h2 {
@@ -110,7 +110,7 @@ body.about {
   margin-right:10px;
 }
 .about section {
-  
+
   margin-bottom: 20px;
   padding-bottom: 5px;
   margin-right:10px;
@@ -124,10 +124,10 @@ body.about {
   margin: 0.6em 0;
 }
 
-.about img { width: 250px; }
-.about ul { list-style: none; }
+.about img { max-width: 250px; }
+.about ul, .about li { list-style: none; }
 
-/* Monday page 
+/* Monday page
 -------------------------------- */
 body.day {
   padding: 0;
@@ -153,7 +153,7 @@ dd {
   margin-top: 0.5em;
 }
 
-/* Registration page 
+/* Registration page
 -------------------------------- */
 body.registration {
   padding: 0;
@@ -165,7 +165,7 @@ body.registration {
   margin-right: 15px;
 }
 
-/* hackathon page 
+/* hackathon page
 -------------------------------- */
 body.hackathon {
   padding: 0;
