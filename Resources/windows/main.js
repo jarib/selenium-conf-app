@@ -167,7 +167,7 @@
 
     // Handle sessions and speaker updates
     var updateCount = 0;
-    Ti.addEventListener('datastore:update_completed', function (e) {
+    Ti.App.addEventListener('datastore:update_completed', function (e) {
         updateCount++;
         if (updateCount >= 2) {
             updateCount = 0;
@@ -177,7 +177,7 @@
         }
     });
 
-    Titanium.App.addEventListener('codestrong:update_data', function (e) {
+    Ti.App.addEventListener('codestrong:update_data', function (e) {
         Ti.API.debug("updating data");
         Codestrong.ui.activityIndicator.showModal('Loading sessions and speakers...', updateTimeout, 'Connection timed out. All session and speaker data may not have updated.');
         updateCount = 0;
