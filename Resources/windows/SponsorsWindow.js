@@ -22,7 +22,7 @@
         html += '<ul id="sponsor-list">';
         for (var i = 0; i < sponsors.length; i++){
           var sponsor = sponsors[i];
-          html += '<li><a href="' + sponsor.url + '" onclick="Ti.App.fireEvent("openURL", {url:"' + sponsor.url + '"}); return false;"><img src="' + sponsor.logo + '"></a></li>';
+          html += '<li><a href="' + sponsor.url + '" onclick="Ti.App.fireEvent(\'openURL\', {url:\'' + sponsor.url + '\'}); return false;"><img src="' + sponsor.logo + '"></a></li>';
         };
         html += '</ul></body></html>'
 
