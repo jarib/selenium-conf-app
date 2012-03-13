@@ -123,7 +123,7 @@
         }
         tvData.push(headerRow);
 
-        var sessions = getRelatedSessions(presenterData.full_name);
+        var sessions = SeConf.datastore.getSessionsForSpeaker(presenterData.full_name);
         var sessionRow = [];
         if (sessions && sessions.length) {
             tvData.push(Codestrong.ui.createHeaderRow('Sessions'));
@@ -199,9 +199,5 @@
 
         return presenterDetailWindow;
     };
-
-    function getRelatedSessions(name) {
-    	return SeConf.datastore.getSessionsForSpeaker(name);
-    }
 
 })();
