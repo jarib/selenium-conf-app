@@ -54,24 +54,24 @@
                 viewTitle: search
             });
         };
-        var data = [{
-          title: '#seconf',
-          view: createTwitterTable('#seconf'),
-            url: 'http://search.twitter.com/search.json?q=%23seconf&result_type=recent&rpp=' + tweetCount,
-            isSearch: true
-        }, {
-            title: '@seleniumhq',
-            view: createTwitterTable('@seleniumhq'),
-            url: 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=seleniumhq&count=' + tweetCount,
-            isSearch: false
-        }, {
-            title: '@seleniumconf',
-            view: createTwitterTable('@seleniumc..'),
-            url: 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=seleniumconf&count=' + tweetCount,
-            isSearch: false
-        }
-
-        ];
+        var data = [
+	        {
+	            title: '@seleniumconf',
+	            view: createTwitterTable('@seleniumc..'),
+	            url: 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=seleniumconf&count=' + tweetCount,
+	            isSearch: false
+	        }, {
+	          title: '#seconf',
+	          view: createTwitterTable('#seconf'),
+	            url: 'http://search.twitter.com/search.json?q=%23seconf&result_type=recent&rpp=' + tweetCount,
+	            isSearch: true
+	        }, {
+	            title: '@seleniumhq',
+	            view: createTwitterTable('@seleniumhq'),
+	            url: 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=seleniumhq&count=' + tweetCount,
+	            isSearch: false
+	        }
+	    ];
         var loadedViews = [];
 
         twitterWindow.add(Codestrong.ui.createTabbedScrollableView({data:data}));
