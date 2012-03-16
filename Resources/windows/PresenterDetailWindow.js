@@ -121,6 +121,24 @@
             });
             headerRow.add(company);
         }
+
+        if (presenterData.twitter != undefined && presenterData.twitter.length) {
+          var handle = presenterData.twitter;
+          var twitter = Titanium.UI.createLabel({
+            text: handle,
+            font: {},
+            textAlign: 'left',
+            color: '#0A4B8A',
+            height: 'auto',
+            left: 120
+          })
+          twitter.addEventListener("click", function(e) {
+            Ti.App.fireEvent('openURL', {url: 'http://twitter.com/' + handle.substring(1)})
+          });
+          headerRow.add(twitter);
+        }
+
+
         tvData.push(headerRow);
 
         var sessions = SeConf.datastore.getSessionsForSpeaker(presenterData.full_name);
