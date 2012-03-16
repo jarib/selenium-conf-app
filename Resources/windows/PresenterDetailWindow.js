@@ -133,7 +133,12 @@
             left: 120
           })
           twitter.addEventListener("click", function(e) {
-            Ti.App.fireEvent('openURL', {url: 'http://twitter.com/' + handle.substring(1)})
+            Codestrong.navGroup.open(Codestrong.ui.createHtmlWindow({
+                title: handle,
+                url: 'http://twitter.com/' + handle.substring(1)
+            }), {
+                animated: true
+            });
           });
           headerRow.add(twitter);
         }
