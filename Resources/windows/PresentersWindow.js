@@ -103,16 +103,18 @@
                         layout: 'horizontal'
                     });
 
-                    var firstNameLabel = Ti.UI.createLabel({
-                        text: speaker.first_name,
-                        font: 'Helvetica',
-                        left: 10,
-                        height: 40,
-                        width: 'auto',
-                        color: '#000',
-                        touchEnabled: false
-                    });
-                    nameView.add(firstNameLabel);
+                    if (speaker.first_name && speaker.first_name.length) {
+                      var firstNameLabel = Ti.UI.createLabel({
+                          text: speaker.first_name,
+                          font: 'Helvetica',
+                          left: 10,
+                          height: 40,
+                          width: 'auto',
+                          color: '#000',
+                          touchEnabled: false
+                      });
+                      nameView.add(firstNameLabel);
+                    }
 
                     var lastNameLabel = Ti.UI.createLabel({
                         text: speaker.last_name,
