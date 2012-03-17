@@ -58,7 +58,7 @@ task :fetch do
     :speakers => as_json(speaker_rows, :index => 'uid'),
     :sponsors => as_json(sponsor_rows)
   }
-  
+
   File.open("data/seconf.json", "w") { |file| file << data.to_json }
   puts 'done.'
 end
