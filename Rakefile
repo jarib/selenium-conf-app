@@ -47,16 +47,18 @@ task :fetch do
   puts "done."
 
   print 'fetching rows...'
-  session_rows = sheet.worksheets[0].rows
-  speaker_rows = sheet.worksheets[1].rows
-  sponsor_rows = sheet.worksheets[2].rows
+  session_rows         = sheet.worksheets[0].rows
+  speaker_rows         = sheet.worksheets[1].rows
+  sponsor_rows         = sheet.worksheets[2].rows
+  extra_locations_rows = sheet.worksheets[3].rows
   puts 'done.'
 
   print 'writing json...'
   data = {
-    :sessions => as_json(session_rows, :index => 'nid'),
-    :speakers => as_json(speaker_rows, :index => 'uid'),
-    :sponsors => as_json(sponsor_rows)
+    :sessions       => as_json(session_rows, :index => 'nid'),
+    :speakers       => as_json(speaker_rows, :index => 'uid'),
+    :sponsors       => as_json(sponsor_rows),
+    :extraLocations => as_json(extra_locations_rows)
   }
 
   File.open("data/seconf.json", "w") { |file| file << data.to_json }

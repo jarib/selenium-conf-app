@@ -38,12 +38,26 @@
     Codestrong.ui.createMapWindow = function () {
         var mapWindow = Titanium.UI.createWindow({
             id: 'mapWindow',
-            title: 'Venue - Savoy Place',
+            title: 'Map',
             backgroundColor: '#FFF',
             barColor: '#414444',
             height: '100%',
             fullscreen: false
         });
+
+        var locations = [
+          {
+            title: 'Savoy Place (Venue)',
+            subtitle: '2 Savoy Place, London WC2R 0BL, United Kingdom',
+            latitude: 51.509771,
+            longitude: -0.119176
+          }
+        ];
+
+        var extraLocations = SeConf.datastore.getExtraLocations();
+        for (var i=0; i < extraLocations.length; i++) {
+          locations.push(extraLocations[i])
+        };
 
         // create table view data object
         var duration = 250;
@@ -54,16 +68,7 @@
                 latitude: 51.514771,
                 longitude: -0.124176,
                 delta: 0.02,
-                annotations: [
-                    {title: 'Savoy Place (Venue)',
-                     subtitle: '2 Savoy Place, London WC2R 0BL, United Kingdom',
-                     latitude: 51.509771,
-                     longitude: -0.119176},
-                    {title: 'Unknown Location (Party)',
-                     subtitle: 'This will remain secret',
-                     latitude: 51.519771,
-                     longitude: -0.129176}
-                ]
+                annotations: locations
             },
             {
                 type: 'web',

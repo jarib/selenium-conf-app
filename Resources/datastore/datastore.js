@@ -5,6 +5,7 @@ SeConf.DataStore = function() {
   this.speakers = null;
   this.sessions = null;
   this.sponsors = null;
+  this.extraLocations = null;
 };
 
 SeConf.DataStore.timeout = 11000;
@@ -13,13 +14,13 @@ SeConf.DataStore.prototype.refresh = function() {
   this.fetch_(this.endpoint + "seconf.json", function(data) {
     SeConf.datastore.speakers = data.speakers;
     Ti.App.Properties.setString('speakers', JSON.stringify(data.speakers));
-    
+
     SeConf.datastore.sessions = data.sessions;
     Ti.App.Properties.setString('sessions', JSON.stringify(data.sessions));
 
     SeConf.datastore.sponsors = data.sponsors;
     Ti.App.Properties.setString('sponsors', JSON.stringify(data.sponsors));
-    
+
     Titanium.App.fireEvent("datastore:update_completed");
   });
 };
@@ -49,6 +50,15 @@ SeConf.DataStore.prototype.getSponsors = function() {
   }
 
   return this.sponsors;
+};
+
+SeConf.DataStore.prototype.getExtraLocations = function() {
+  if(!this.extraLocations) {
+    this.extraLocations = JSON.parse(Ti.App.Properties.getString('extraLocations', '[]'));
+    this.refreshIfNecessary(this.extraLocations);
+  }
+
+  return this.extraLocations;
 };
 
 
