@@ -21,6 +21,9 @@ SeConf.DataStore.prototype.refresh = function() {
     SeConf.datastore.sponsors = data.sponsors;
     Ti.App.Properties.setString('sponsors', JSON.stringify(data.sponsors));
 
+    SeConf.datastore.extraLocations = data.extraLocations;
+    Ti.App.Properties.setString('extraLocations', JSON.stringify(data.extraLocations));
+
     Titanium.App.fireEvent("datastore:update_completed");
   });
 };
