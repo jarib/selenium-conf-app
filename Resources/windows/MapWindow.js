@@ -46,18 +46,20 @@
         });
 
         var locations = [
-          {
-            title: 'Savoy Place (Venue)',
-            subtitle: '2 Savoy Place, London WC2R 0BL, United Kingdom',
-            latitude: 51.509771,
-            longitude: -0.119176
-          }
+          {title: 'Savoy Place (Venue)',
+           subtitle: '2 Savoy Place, London WC2R 0BL',
+           latitude: 51.509849,
+           longitude: -0.119348},
+          {title: 'The Coal Hole (Party)',
+           subtitle: '91 The Strand, London WC2R 0DW',
+           latitude: 51.510176,
+           longitude: -0.121587}
         ];
 
         var extraLocations = SeConf.datastore.getExtraLocations();
         for (var i=0; i < extraLocations.length; i++) {
-          locations.push(extraLocations[i])
-        };
+          locations.push(extraLocations[i]);
+        }
 
         // create table view data object
         var duration = 250;
@@ -65,9 +67,9 @@
             {
                 type: 'map',
                 title: 'Maps',
-                latitude: 51.514771,
-                longitude: -0.124176,
-                delta: 0.02,
+                latitude: 51.509911,
+                longitude: -0.1203775,
+                delta: 0.001,
                 annotations: locations
             },
             {
@@ -134,7 +136,7 @@
                     mapType: Titanium.Map.STANDARD_TYPE,
                     region: {latitude: myEntry.latitude,
                              longitude: myEntry.longitude,
-                             latitudeDelta: myEntry.delta,
+                             latitudeDelta: (Codestrong.isAndroid()) ? myEntry.delta * 5 : myEntry.delta,
                              longitudeDelta: myEntry.delta},
                     animate: true,
                     regionFit: true,
