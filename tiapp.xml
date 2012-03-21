@@ -8,7 +8,7 @@
         <target device="blackberry">false</target>
         <target device="android">true</target>
     </deployment-targets>
-    <id>com.jaribakken.seconf</id>
+    <id>no.jaribakken.seconf</id>
     <name>SeConf</name>
     <version>1.0</version>
     <publisher>Jari Bakken</publisher>

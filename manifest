@@ -1,8 +1,8 @@
 #appname:Seleniumconf
 #publisher:Jari Bakken
-#url:http://seconf.jaribakken.com
+#url:http://seleniumconf.org
 #image:appicon.png
-#appid:com.jaribakken.seconf
+#appid:no.jaribakken.seconf
 #desc:https://github.com/jarib/selenium-conf-app
 #type:ipad
 #guid:755a100d-f77d-48fc-ad53-80c6e1bad9dd

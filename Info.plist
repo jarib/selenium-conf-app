@@ -28,7 +28,7 @@
 		</dict>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>com.jaribakken.seconf</string>
+	<string>no.jaribakken.seconf</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
