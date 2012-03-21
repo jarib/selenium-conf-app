@@ -140,6 +140,19 @@ SeConf.DataStore.prototype.getSessionsFor = function(startDate, endDate) {
     }
   }
 
+  result.sort(function(a, b) {
+    var a_start = Codestrong.datetime.strtotime(a.start_date);
+    var b_start = Codestrong.datetime.strtotime(b.start_date);
+
+    if (a_start > b_start) {
+      return 1;
+    } else if (a_start < b_start) {
+      return -1;
+    } else {
+      return (a.room > b.room ? 1 : -1);
+    }
+  });
+
   return result;
 }
 
