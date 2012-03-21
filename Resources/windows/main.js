@@ -172,7 +172,7 @@
 
     Ti.App.addEventListener('codestrong:update_data', function (e) {
         Ti.API.debug("updating data");
-        Codestrong.ui.activityIndicator.showModal('Loading sessions and speakers...', updateTimeout, 'Connection timed out. All session and speaker data may not have updated.');
+        Codestrong.ui.activityIndicator.showModal('Loading...', updateTimeout, 'Connection timed out. All session and speaker data may not have updated.');
         SeConf.datastore.refresh();
     });
 })();

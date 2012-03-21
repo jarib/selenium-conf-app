@@ -131,7 +131,8 @@
             color: '#0A4B8A',
             height: 'auto',
             left: 120
-          })
+          });
+
           twitter.addEventListener("click", function(e) {
             Codestrong.navGroup.open(Codestrong.ui.createHtmlWindow({
                 title: handle,
@@ -140,8 +141,32 @@
                 animated: true
             });
           });
+
           headerRow.add(twitter);
         }
+
+        if (presenterData.website != undefined && presenterData.website.length) {
+          var site = Titanium.UI.createLabel({
+            text: presenterData.website,
+            font: {},
+            textAlign: 'left',
+            color: '#0A4B8A',
+            height: 'auto',
+            left: 120
+          });
+
+          site.addEventListener("click", function(e) {
+            Codestrong.navGroup.open(Codestrong.ui.createHtmlWindow({
+                title: 'Website',
+                url: presenterData.website
+            }), {
+                animated: true
+            });
+          });
+
+          headerRow.add(site);
+        }
+
 
 
         tvData.push(headerRow);
