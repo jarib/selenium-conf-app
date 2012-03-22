@@ -56,11 +56,6 @@
            longitude: -0.121587}
         ];
 
-        var extraLocations = SeConf.datastore.getExtraLocations();
-        for (var i=0; i < extraLocations.length; i++) {
-          locations.push(extraLocations[i]);
-        }
-
         // create table view data object
         var duration = 250;
         var data = [
