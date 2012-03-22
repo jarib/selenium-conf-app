@@ -36,6 +36,8 @@
     <android xmlns:android="http://schemas.android.com/apk/res/android">
         <manifest>
             <supports-screens android:anyDensity="false"/>
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
         </manifest>
         <icon>appicon.png</icon>
     </android>
