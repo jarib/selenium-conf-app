@@ -50,10 +50,10 @@
            subtitle: '2 Savoy Place, London WC2R 0BL',
            latitude: 51.509849,
            longitude: -0.119348},
-          {title: 'The Coal Hole (Party)',
-           subtitle: '91 The Strand, London WC2R 0DW',
-           latitude: 51.510176,
-           longitude: -0.121587}
+          {title: 'The Glasshouse Stores (Party)',
+           subtitle: '55 Brewer Street, London W1F 9UL',
+           latitude: 51.511506,
+           longitude: -0.135485}
         ];
 
         // create table view data object
