@@ -1,11 +1,11 @@
 var SeConf = SeConf || {};
 
 SeConf.DataStore = function() {
-  this.endpoint = "https://raw.github.com/jarib/selenium-conf-app/master/data/";
-  this.speakers = null;
-  this.sessions = null;
-  this.sponsors = null;
-  this.extraLocations = null;
+  this.endpoint  = "https://raw.github.com/jarib/selenium-conf-app/master/data/";
+  this.speakers  = null;
+  this.sessions  = null;
+  this.sponsors  = null;
+  this.locations = null;
 };
 
 SeConf.DataStore.timeout = 11000;
@@ -21,8 +21,8 @@ SeConf.DataStore.prototype.refresh = function() {
     SeConf.datastore.sponsors = data.sponsors;
     Ti.App.Properties.setString('sponsors', JSON.stringify(data.sponsors));
 
-    SeConf.datastore.extraLocations = data.extraLocations;
-    Ti.App.Properties.setString('extraLocations', JSON.stringify(data.extraLocations));
+    SeConf.datastore.locations = data.locations;
+    Ti.App.Properties.setString('locations', JSON.stringify(data.locations));
 
     Titanium.App.fireEvent("datastore:update_completed");
   });
@@ -55,13 +55,13 @@ SeConf.DataStore.prototype.getSponsors = function() {
   return this.sponsors;
 };
 
-SeConf.DataStore.prototype.getExtraLocations = function() {
-  if(!this.extraLocations) {
-    this.extraLocations = JSON.parse(Ti.App.Properties.getString('extraLocations', '[]'));
-    this.refreshIfNecessary(this.extraLocations);
+SeConf.DataStore.prototype.getLocations = function() {
+  if(!this.locations) {
+    this.locations = JSON.parse(Ti.App.Properties.getString('locations', '[]'));
+    this.refreshIfNecessary(this.locations);
   }
 
-  return this.extraLocations;
+  return this.locations;
 };
 
 

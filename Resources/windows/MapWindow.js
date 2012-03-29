@@ -45,31 +45,40 @@
             fullscreen: false
         });
 
-        var locations = [
-          {title: 'Savoy Place (Venue)',
-           subtitle: '2 Savoy Place, London WC2R 0BL',
-           latitude: 51.509849,
-           longitude: -0.119348},
-          {title: 'The Glasshouse Stores (Party)',
-           subtitle: '55 Brewer Street, London W1F 9UL',
-           latitude: 51.511506,
-           longitude: -0.135485}
-        ];
+        var map_lat, map_lon, map_delta;
+        var locations = SeConf.datastore.getLocations();
 
-        var lats = [],
-            lons = [],
-            len = locations.length,
-            sum = function(a,b) {return a + b;},
-            max = function(a,b) {return Math.max(a,b);},
-            min = function(a,b) {return Math.min(a,b);};
+        if(locations && locations.length) {
+          var lats = [],
+              lons = [],
+              len = locations.length,
+              sum = function(a,b) {return a + b;},
+              max = function(a,b) {return Math.max(a,b);},
+              min = function(a,b) {return Math.min(a,b);};
 
-        for (var i = 0; i < len; i++) {
-            lats.push(locations[i].latitude);
-            lons.push(locations[i].longitude);
+          for (var i = 0; i < len; i++) {
+              lats.push(locations[i].latitude);
+              lons.push(locations[i].longitude);
+          }
+
+          map_lat = lats.reduce(sum) / len,
+          map_lon = lons.reduce(sum) / len,
+          map_delta = Math.max(lats.reduce(max) - lats.reduce(min),
+                               lons.reduce(max) - lons.reduce(min)) / 3;
+        } else {
+          // if we fail to load the remote data, use this hardcoded venue location
+          map_lat = 51.509911;
+          map_lon = -0.1203775;
+          map_delta = 0.001;
+
+          locations = [{
+            title: 'Savoy Place (Venue)',
+            subtitle: '2 Savoy Place, London WC2R 0BL',
+            latitude: 51.509849,
+            longitude: -0.119348
+          }]
         }
 
-        var map_lat = lats.reduce(sum) / len,
-            map_lon = lons.reduce(sum) / len;
 
         // create table view data object
         var duration = 250;
@@ -79,8 +88,7 @@
                 title: 'Maps',
                 latitude: map_lat,
                 longitude: map_lon,
-                delta: Math.max(lats.reduce(max) - lats.reduce(min),
-                                lons.reduce(max) - lons.reduce(min)) / 3,
+                delta: map_delta,
                 annotations: locations
             },
             {

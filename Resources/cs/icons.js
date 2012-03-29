@@ -20,7 +20,8 @@
       },
       {
         image: '/images/dashboard/maps' + imageSuffix + '.png',
-        func: Codestrong.ui.createMapWindow
+        func: Codestrong.ui.createMapWindow,
+        refresh: true
       },
       {
         image: '/images/dashboard/news' + imageSuffix + '.png',
