@@ -10,7 +10,7 @@
     </deployment-targets>
     <id>no.jaribakken.seconf</id>
     <name>SeConf</name>
-    <version>1.1</version>
+    <version>1.2</version>
     <publisher>Jari Bakken</publisher>
     <url>http://seleniumconf.org</url>
     <description>https://github.com/jarib/selenium-conf-app</description>
@@ -35,8 +35,8 @@
     </iphone>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
         <manifest
-            android:versionCode="2"
-            android:versionName="1.1">
+            android:versionCode="3"
+            android:versionName="1.2">
             <supports-screens android:anyDensity="false"/>
             <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
             <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
