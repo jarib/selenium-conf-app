@@ -56,15 +56,31 @@
            longitude: -0.135485}
         ];
 
+        var lats = [],
+            lons = [],
+            len = locations.length,
+            sum = function(a,b) {return a + b;},
+            max = function(a,b) {return Math.max(a,b);},
+            min = function(a,b) {return Math.min(a,b);};
+
+        for (var i = 0; i < len; i++) {
+            lats.push(locations[i].latitude);
+            lons.push(locations[i].longitude);
+        }
+
+        var map_lat = lats.reduce(sum) / len,
+            map_lon = lons.reduce(sum) / len;
+
         // create table view data object
         var duration = 250;
         var data = [
             {
                 type: 'map',
                 title: 'Maps',
-                latitude: 51.509911,
-                longitude: -0.1203775,
-                delta: 0.001,
+                latitude: map_lat,
+                longitude: map_lon,
+                delta: Math.max(lats.reduce(max) - lats.reduce(min),
+                                lons.reduce(max) - lons.reduce(min)) / 3,
                 annotations: locations
             },
             {
