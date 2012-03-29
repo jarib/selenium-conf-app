@@ -172,7 +172,19 @@
 
     Ti.App.addEventListener('codestrong:update_data', function (e) {
         Ti.API.debug("updating data");
-        Codestrong.ui.activityIndicator.showModal('Loading...', updateTimeout, 'Connection timed out. All session and speaker data may not have updated.');
-        SeConf.datastore.refresh();
+
+        if(!Ti.Network.online) {
+          Titanium.UI.createAlertDialog({
+            title: 'No network connection detected.',
+            message: 'Unable to load session and speaker data.',
+            buttonNames: ['OK']
+          }).show();
+        } else {
+          Codestrong.ui.activityIndicator.showModal('Loading...', updateTimeout, 'Connection timed out. All session and speaker data may not have updated.');
+          SeConf.datastore.refresh();
+        }
+
     });
+
+    Ti.App.fireEvent("codestrong:update_data");
 })();
