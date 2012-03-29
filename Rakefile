@@ -23,6 +23,14 @@ def as_json(rows, opts = {})
       row_hash['time'] = human_time_for(Time.parse(row_hash['start_date']), Time.parse(row_hash['end_date']))
     end
 
+    if row_hash['latitude']
+      row_hash['latitude'] = Float(row_hash['latitude'])
+    end
+
+    if row_hash['longitude']
+      row_hash['longitude'] = Float(row_hash['longitude'])
+    end
+
     data << row_hash
   end
 
